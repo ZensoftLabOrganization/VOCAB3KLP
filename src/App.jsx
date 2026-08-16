@@ -6,59 +6,72 @@ import bookImage from "./images/image3.png";
 import bookDetail from "./images/image4.png";
 import androidApp from "./images/image5.png";
 import image6 from "./images/image6.png";
+import infoIcon from "./assets/Info icon.svg";
 // bookDetail (image4.png) removed per request
 
 const featureCards = [
   {
     badge: "ভিডিও সহায়তা",
     title: "৩,০০০ Dedicated Video Lesson",
-    description: "প্রতিটি শব্দ বুঝতে dedicated visual lesson",
+    description: "প্রতিটি শব্দ বুঝতে রয়েছে dedicated visual lesson",
     icon: "video",
+    color: "#D9F6F8",
+    badgeColor: "#147D89",
     accent: "bg-[#dff7fb] text-[#2c7f93]",
     bubble: "০১",
     bubbleTone: "bg-[#e2f1f4]",
   },
   {
-    badge: "অডিও শুনুন",
+    badge: "শুনে শিখুন",
     title: "সম্পূর্ণ বইয়ের Audio Podcast",
     description: "যেকোনো সময় শুনে শিখতে পারবেন অডিও দিয়ে",
     icon: "audio",
+    color: "#FFF0CE",
+    badgeColor: "#A86600",
     accent: "bg-[#f9efd7] text-[#bb7a10]",
     bubble: "০২",
     bubbleTone: "bg-[#f3ead6]",
   },
   {
-    badge: "অ্যান্ড্রয়েড সহায়তা",
+    badge: "যেকোনো জায়গায়",
     title: "Dedicated Android App",
-    description: "Offline ব্যবহারযোগ্য—ইনস্ট্যান্ট practice control",
+    description: "Offline ব্যবহারযোগ্য—ইন্টারনেট ছাড়াও প্র্যাকটিস করুন।",
     icon: "app",
+    color: "#E2EAFF",
+    badgeColor: "#3158A5",
     accent: "bg-[#dee7ff] text-[#4561d7]",
     bubble: "০৩",
     bubbleTone: "bg-[#e2e8f7]",
   },
   {
-    badge: "ভোকাল এক্সারসাইজ",
+    badge: "বলার অনুশীলন",
     title: "Vocal Exercise",
-    description: "উচ্চারণ ঠিক করতে কাজে লাগে vocal exercise",
+    description: "উচ্চারণ ঠিক করতে বলার অভ্যাস গড়ে তুলুন।",
     icon: "mic",
+    color: "#F0E5FB",
+    badgeColor: "#7B4CA1",
     accent: "bg-[#eadcff] text-[#8b60d7]",
     bubble: "০৪",
     bubbleTone: "bg-[#ece2ff]",
   },
   {
-    badge: "প্রতিটি চর্চা",
-    title: "2-1 Tongue Twister",
-    description: "কঠিন শব্দ মুখে বলার জন্য ছোট ছোট practice",
+    badge: "মজার চ্যালেঞ্জ",
+    title: "২৮টি Tongue Twister",
+    description: "শব্দ বলার জড়তা কাটাতে ছোট ছোট অনুশীলন।",
     icon: "note",
+    color: "#FDE8E3",
+    badgeColor: "#7B4CA1",
     accent: "bg-[#fee0db] text-[#d06a57]",
     bubble: "০৫",
     bubbleTone: "bg-[#f8e4e1]",
   },
   {
-    badge: "প্রগ্রেস ট্র্যাকিং",
+    badge: "মনে রাখার সিস্টেম",
     title: "Practice + Revision Support",
-    description: "যেখানে দরকার সেখানে practice আর revision",
+    description: "বারবার চর্চায় শেখা শব্দগুলো মনে ধরে রাখুন।",
     icon: "refresh",
+    color: "#E1F3E7",
+    badgeColor: "#396D4F",
     accent: "bg-[#dff0dd] text-[#5f9b57]",
     bubble: "০৬",
     bubbleTone: "bg-[#e7efdf]",
@@ -68,23 +81,23 @@ const featureCards = [
 const learningSteps = [
   {
     step: "ধাপ ০১",
-    title: "দেখুন ও শুনুন",
-    desc: "শব্দ, বাংলা অর্থ, উচ্চারণ ও Example দেখুন",
+    title: "দেখুন ও বুঝুন",
+    desc: "শব্দ, বাংলা অর্থ, উচ্চারণ ও Example দেখুন।",
   },
   {
     step: "ধাপ ০২",
     title: "শুনুন ও বলুন",
-    desc: "Audio শুনুন, নিজে উচ্চারণ চেষ্টা করুন; দরকার হলে Video দেখুন",
+    desc: "Audio শুনুন, নিজে উচ্চারণ করুন; দরকার হলে Video দেখুন।",
   },
   {
     step: "ধাপ ০৩",
     title: "ব্যবহার করে দেখুন",
-    desc: "Example তৈরি, নিজের বাক্যে ব্যবহার করে দেখুন এবং App-এ Practice করুন",
+    desc: "Example বুঝুন, নিজের বাক্যে ব্যবহার করুন এবং App-এ Practice করুন।",
   },
   {
     step: "ধাপ ০৪",
     title: "মনে করুন ও Revision দিন",
-    desc: "বহুবার দেখা ও মনে রাখার চেষ্টা করুন; নির্দিষ্ট হলে ঠিক রাখুন",
+    desc: "বই না দেখে মনে করার চেষ্টা করুন; নিশ্চিত হলে টিক দিন।",
   },
 ];
 
@@ -391,7 +404,7 @@ function App() {
             ১ মিনিটে দেখে নিন
           </h2>
           <p className="mt-2 text-sm text-white/60">
-            পুরো পরিচিতি — ১ মিনিটে দ্রুত শিখুন
+            পুরো সিস্টেমটি ১ মিনিটে বুঝে নিন
           </p>
 
           <div className="mt-8">
@@ -420,51 +433,35 @@ function App() {
         <div className="absolute right-0 top-0 h-32 w-32 rounded-full border border-[#d9d3c8] opacity-60" />
         <div className="absolute left-0 bottom-0 h-28 w-28 rounded-full border border-[#d9d3c8] opacity-60" />
 
-        <div className="mx-auto max-w-[1120px] text-center">
+        <div className="mx-auto max-w-[1152px] text-center">
           <div className="text-[0.72rem] font-bold uppercase tracking-[0.42em] text-[#af8f46]">
             Included with the book
           </div>
           <h2 className="mt-4 text-[clamp(2rem,4vw,3.35rem)] font-black tracking-[-0.05em] text-[#22314a]">
-            বইটির সাথে ফ্রি যা পাচ্ছেন
+            বইটির সাথে ফ্রিতে যা পাচ্ছেন
           </h2>
           <p className="mt-4 text-[0.95rem] text-[#6b7487] sm:text-[1.02rem]">
-            বই কিনলেই পাওয়া যাবে — আলাদা কোনো চার্জ নেই
+            বই কিনলেই এগুলো পাচ্ছেন—আলাদা কোনো চার্জ নেই।
           </p>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="included-card-grid mt-12">
             {featureCards.map((card) => (
               <article
                 key={card.title}
-                className="group relative min-h-[196px] overflow-hidden rounded-[1.35rem] border border-[#e1d9ca] bg-[#fbf8f0] px-5 py-5 text-left shadow-[0_10px_28px_rgba(24,32,48,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(24,32,48,0.08)]"
+                className="included-card group"
+                style={{
+                  "--card-color": card.color,
+                  "--badge-color": card.badgeColor,
+                }}
               >
-                <div
-                  className={`absolute right-0 top-0 h-16 w-16 rounded-bl-[2rem] ${card.bubbleTone}`}
-                />
-                <div className="relative flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-[#6e7b92]">
-                      {card.badge}
-                    </div>
-                    <h3 className="mt-4 max-w-[16rem] text-[1.04rem] font-black leading-[1.35] text-[#1e2d44] sm:text-[1.15rem]">
-                      {card.title}
-                    </h3>
-                    <p className="mt-4 max-w-[17rem] text-[0.88rem] leading-7 text-[#747e90]">
-                      {card.description}
-                    </p>
-                  </div>
-
-                  <div
-                    className={`grid h-11 w-11 place-items-center rounded-2xl ${card.accent}`}
-                  >
-                    <CardIcon type={card.icon} />
-                  </div>
+                <div className="included-card-corner" />
+                <div className="included-card-icon">
+                  <CardIcon type={card.icon} />
                 </div>
-
-                <div className="relative mt-10 h-px bg-[#e7dfd2]" />
-                <div className="relative mt-2 text-[0.95rem] font-black text-[#22314a] opacity-0 transition group-hover:opacity-100">
-                  View details
-                </div>
-                <div className="absolute right-3 top-3 text-[0.64rem] font-bold tracking-[0.2em] text-[#b8b0a4]">
+                <div className="included-card-badge">{card.badge}</div>
+                <h3 className="included-card-title">{card.title}</h3>
+                <p className="included-card-description">{card.description}</p>
+                <div className="included-card-number">
                   {card.bubble}
                 </div>
               </article>
@@ -472,13 +469,61 @@ function App() {
           </div>
 
           <div className="mx-auto mt-6 max-w-[790px] rounded-[1rem] bg-[#102948] px-5 py-4 text-left text-[0.82rem] leading-7 text-white shadow-[0_16px_36px_rgba(9,15,28,0.18)] sm:px-6 sm:text-[0.92rem]">
-            <span className="inline-flex items-center gap-3">
-              <span className="grid h-5 w-5 place-items-center rounded-full border border-[#f4c24b]/55 text-[0.7rem] text-[#f4c24b]">
-                i
-              </span>
-              Offline App, Vocal Exercise ও Tongue Twister বইয়ের Study Guide-এ
-              সরাসরি আছে।
+            <span className="flex w-full items-center justify-center gap-3 text-center">
+              <img src={infoIcon} alt="" className="h-5 w-5 shrink-0" />
+              Offline App, Vocal Exercise ও Tongue Twister বইয়ের Study Guide-এ সরাসরি আছে।
             </span>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative flex min-h-[670px] flex-col items-center justify-center self-stretch overflow-hidden bg-[linear-gradient(170deg,#040914_6.17%,#071022_93.83%)] px-6 py-24 text-white">
+        <div className="relative z-10 mx-auto w-full max-w-[896px] text-center">
+          <div className="text-[0.72rem] font-bold uppercase tracking-[0.42em] text-[#f7c84f]">
+            THE MASTERY LOOP
+          </div>
+          <h2 className="mt-4 text-[clamp(2rem,4vw,3rem)] font-normal tracking-[-0.04em] text-white">
+            একটি শব্দ শিখবেন যেভাবে
+          </h2>
+          <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-white/45 sm:text-[0.95rem]">
+            চারটি ধাপ পরপর একসঙ্গে কাজ করে — দেখা, শোনা, বলা ও রিভিশন একই ছন্দে।
+          </p>
+
+          <div className="mastery-loop-grid mt-14 text-left">
+            {learningSteps.map((step, index) => {
+              const cardStyles = [
+                "border-[#8f6d2a]/45 bg-[#1a1b1d]",
+                "border-[#2f7592]/45 bg-[#0d1c2c]",
+                "border-[#5451a6]/45 bg-[#13152f]",
+                "border-[#9b6334]/45 bg-[#1b191f]",
+              ];
+              const textStyles = [
+                "text-[#f7c84f]",
+                "text-[#72d9e8]",
+                "text-[#a99aff]",
+                "text-[#f7a23e]",
+              ];
+
+              return (
+                <article
+                  key={step.step}
+                  className={`relative min-h-[144px] overflow-hidden rounded-[16px] border p-7 ${cardStyles[index]}`}
+                >
+                  <div className={`text-[0.68rem] font-bold uppercase tracking-[0.28em] ${textStyles[index]}`}>
+                    {step.step}
+                  </div>
+                  <h3 className="mt-4 text-[1.18rem] font-normal text-white sm:text-[1.3rem]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-[0.82rem] leading-6 text-white/60 sm:text-sm">
+                    {step.desc}
+                  </p>
+                  <div className={`absolute -bottom-8 -right-3 text-[6rem] font-black leading-none opacity-[0.06] ${textStyles[index]}`}>
+                    {index + 1}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
