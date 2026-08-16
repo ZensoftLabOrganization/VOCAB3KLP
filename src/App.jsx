@@ -260,15 +260,29 @@ function App() {
                 App দেখুন
               </a>
               <a href="#" className="hover:text-white">
-                ধাপসমূহ
+                প্রশ্নোত্তর
               </a>
             </nav>
 
             <a
               href="#"
-              className="rounded-2xl bg-[#f7c84f] px-5 py-3 text-sm font-bold text-[#10172a] shadow-[0_14px_35px_rgba(247,200,79,0.38)] transition hover:-translate-y-0.5 hover:bg-[#ffd86d]"
+              className="flex h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105"
             >
               এখনই অর্ডার করুন
+              <svg
+                viewBox="0 0 20 20"
+                className="h-4 w-4 shrink-0"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.8"
+                />
+              </svg>
             </a>
           </header>
 
@@ -276,7 +290,7 @@ function App() {
             <div className="max-w-[560px] lg:pr-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#f7c84f]/30 bg-[#0c1426] px-4 py-2 text-[0.72rem] font-medium text-[#f7c84f] shadow-soft">
                 <span className="text-sm">◂</span>
-                বাংলাদেশে আয়াতের প্রথম
+                বাংলাদেশে আমরাই প্রথম
               </div>
 
               <h1 className="mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]">
@@ -293,21 +307,49 @@ function App() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#"
-                  className="rounded-2xl bg-[#f7c84f] px-7 py-4 text-center text-sm font-extrabold text-[#10172a] shadow-[0_16px_38px_rgba(247,200,79,0.42)] transition hover:-translate-y-0.5 hover:bg-[#ffd86d]"
+                  className="flex h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-center text-sm font-extrabold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105"
                 >
                   এখনই অর্ডার করুন
+                  <svg
+                    viewBox="0 0 20 20"
+                    className="h-4 w-4 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                    />
+                  </svg>
                 </a>
                 <a
                   href="#"
-                  className="rounded-2xl border border-white/14 bg-white/4 px-7 py-4 text-center text-sm font-semibold text-white/92 transition hover:border-white/26 hover:bg-white/7"
+                  className="flex h-[46.938px] min-h-[46.4px] w-full max-w-[242.047px] shrink-0 items-center justify-center gap-[8.8px] rounded-[12px] border border-white/20 bg-white/[0.04] px-[18.4px] py-[12.48px] text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/[0.08]"
                 >
-                  বইটি দেখুন ▾
+                  <span>বইয়ের ভেতর দেখুন</span>
+                  <svg
+                    viewBox="0 0 20 20"
+                    className="h-4 w-4 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5.5 7.5 10 12l4.5-4.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                    />
+                  </svg>
                 </a>
               </div>
 
               <div className="mt-4 flex items-center gap-2 text-sm text-white/55">
                 <span className="text-[#69d7a7]">✓</span>
-                সারা দেশে কন্টেন্ট অন ডেলিভারি
+                সারা দেশে ক্যাশ অন ডেলিভারি
               </div>
             </div>
 
@@ -317,24 +359,17 @@ function App() {
                 alt="Oxford 3000 vocabulary pack"
                 className="block w-full select-none object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
               />
-              <div className="absolute right-0 top-6 -translate-y-1/2 hidden md:block">
-                <img
-                  src={heroArtwork}
-                  alt="marked image"
-                  className="w-44 md:w-52 lg:w-60 select-none object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
-                />
-              </div>
             </div>
           </div>
 
           <div className="mx-3 grid gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
             {[
-              ["3,000", "Word Bank"],
-              ["3,000", "Dedicated Video"],
+              ["৩,০০০", "মূল শব্দ"],
+              ["৩,০০০", "Dedicated Video"],
               ["সম্পূর্ণ", "Audio"],
-              ["Learning Principles", "প্রণোদিত সিস্টেম"],
+              ["Learning Principles", "অনুযায়ী সাজান"],
               ["Offline", "Android App"],
-              ["850", "ডিজাইনড চার্ট"],
+              ["৳৫০", "ডেলিভারি চার্জ মাত্র"],
             ].map(([title, subtitle]) => (
               <div
                 key={title + subtitle}
