@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./images/logo.png";
 import heroArtwork from "./images/image1.png";
 import videoThumb from "./images/image2.png";
@@ -195,6 +195,43 @@ function CardIcon({ type, className = "" }) {
 
 function App() {
   const [expandedIndex, setExpandedIndex] = useState(-1);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const sectionIds = [
+      "how-it-works",
+      "book",
+      "package",
+      "student-stories",
+      "android-app",
+      "faq",
+      "order",
+    ];
+
+    const updateNavigation = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0);
+
+      const marker = window.scrollY + window.innerHeight * 0.28;
+      let current = "";
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= marker) current = id;
+      });
+      setActiveSection(current);
+    };
+
+    updateNavigation();
+    window.addEventListener("scroll", updateNavigation, { passive: true });
+    window.addEventListener("resize", updateNavigation);
+    return () => {
+      window.removeEventListener("scroll", updateNavigation);
+      window.removeEventListener("resize", updateNavigation);
+    };
+  }, []);
 
   const faqItems = [
     {
@@ -238,8 +275,9 @@ function App() {
       {/* Section - 01 */}
       <section id="top" className="relative overflow-hidden bg-[#060b18]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(65,118,255,0.34),transparent_0_22%),radial-gradient(circle_at_82%_70%,rgba(249,199,75,0.12),transparent_0_18%),linear-gradient(180deg,#060b18_0%,#0b172f_100%)]" />
-        <div className="relative mx-auto max-w-[1240px] px-3 pt-4 sm:px-5 lg:px-0 lg:pt-3">
-          <header className="flex items-center justify-between border-b border-white/8 bg-[#050811] px-4 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.2)] sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-[1240px] px-3 pb-4 pt-[92px] sm:px-5 sm:pt-[96px] lg:px-0 lg:pt-[84px]">
+          <header className="fixed left-0 right-0 top-0 z-[100] h-[80px] min-h-[80px] w-full border-b border-white/8 bg-[#050811] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+            <div className="mx-auto flex h-[80px] min-h-[80px] w-full max-w-[1152px] items-center justify-between px-4 sm:px-6 lg:px-0">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 sm:gap-3">
                 <img
@@ -258,43 +296,39 @@ function App() {
               </div>
             </div>
 
-           <header>
-  
-  {/* logo */}
+            <nav className="hidden items-center gap-6 text-sm text-white/84 xl:flex">
+              {[
+                ["how-it-works", "কীভাবে কাজ করে"],
+                ["book", "বই দেখুন"],
+                ["package", "সম্পূর্ণ প্যাকেজ"],
+                ["student-stories", "শিক্ষার্থীদের অভিজ্ঞতা"],
+                ["android-app", "App দেখুন"],
+                ["faq", "প্রশ্নোত্তর"],
+              ].map(([id, label]) => (
+                <a key={id} href={`#${id}`} className={`whitespace-nowrap rounded-md px-2 py-1 transition ${activeSection === id ? "bg-white/12 text-white" : "hover:text-white"}`}>
+                  {label}
+                </a>
+              ))}
+            </nav>
 
-  <nav className="hidden items-center gap-6 text-sm text-white/84 xl:flex">
-    <a href="#how-it-works" className="hover:text-white">
-      কীভাবে কাজ করে
-    </a>
-
-    <a href="#book" className="hover:text-white">
-      বই দেখুন
-    </a>
-
-    <a href="#package" className="hover:text-white">
-      সম্পূর্ণ প্যাকেজ
-    </a>
-
-    <a href="#student-stories" className="hover:text-white">
-      শিক্ষার্থীদের অভিজ্ঞতা
-    </a>
-
-    <a href="#android-app" className="hover:text-white">
-      App দেখুন
-    </a>
-
-    <a href="#faq" className="hover:text-white">
-      প্রশ্নোত্তর
-    </a>
-  </nav>
-
-  {/* এখনই অর্ডার করুন button */}
-
-</header>
+            <button
+              type="button"
+              aria-label={mobileMenuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="ml-auto grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-white transition hover:bg-white/10 xl:hidden"
+            >
+              <span className="sr-only">মেনু</span>
+              <span className="flex w-5 flex-col gap-1.5">
+                <span className="h-0.5 w-full bg-current" />
+                <span className="h-0.5 w-full bg-current" />
+                <span className="h-0.5 w-full bg-current" />
+              </span>
+            </button>
 
             <a
               href="#order"
-              className="flex h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105"
+              className="hidden h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
             >
               এখনই অর্ডার করুন
               <svg
@@ -312,6 +346,28 @@ function App() {
                 />
               </svg>
             </a>
+
+            {mobileMenuOpen && (
+              <nav className="absolute left-0 right-0 top-full z-50 flex flex-col gap-1 border-t border-white/10 bg-[#050811] p-4 text-sm text-white/85 shadow-xl xl:hidden">
+                {[
+                  ["#how-it-works", "কীভাবে কাজ করে"],
+                  ["#book", "বই দেখুন"],
+                  ["#package", "সম্পূর্ণ প্যাকেজ"],
+                  ["#student-stories", "শিক্ষার্থীদের অভিজ্ঞতা"],
+                  ["#android-app", "App দেখুন"],
+                  ["#faq", "প্রশ্নোত্তর"],
+                ].map(([href, label]) => (
+                  <a key={href} href={href} onClick={() => setMobileMenuOpen(false)} className={`whitespace-nowrap rounded-lg px-3 py-3 transition ${activeSection === href.slice(1) ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"}`}>
+                    {label}
+                  </a>
+                ))}
+                <a href="#order" onClick={() => setMobileMenuOpen(false)} className="mt-2 flex items-center justify-center rounded-xl bg-[#f8c94b] px-4 py-3 font-bold text-[#10172a]">
+                  এখনই অর্ডার করুন
+                </a>
+              </nav>
+            )}
+            </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 h-[2px] bg-white transition-[width] duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
           </header>
 
           <div className="grid items-center gap-6 px-3 pb-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:pt-24">
@@ -425,21 +481,38 @@ function App() {
           </p>
 
           <div className="mt-8">
-            <div className="relative mx-auto max-w-[900px] rounded-xl overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
-              <img
-                src={videoThumb}
-                alt="Watch 1 minute"
-                className="w-full h-auto object-cover"
-              />
-              <button className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full bg-[#ffd86d] flex items-center justify-center shadow-[0_10px_30px_rgba(247,200,79,0.38)]">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 text-[#10172a]"
-                  aria-hidden="true"
-                >
-                  <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
-                </svg>
-              </button>
+            <div className="relative mx-auto aspect-video max-w-[990px] overflow-hidden rounded-xl bg-[#040914] shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+              {videoPlaying ? (
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube.com/embed/brdP8Tgy1nM?autoplay=1&rel=0"
+                  title="Oxford 3000 Vocab introduction"
+                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <img
+                    src={videoThumb}
+                    alt="Watch 1 minute"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setVideoPlaying(true)}
+                    aria-label="১ মিনিটের ভিডিও চালু করুন"
+                    className="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[#F8C94B] shadow-[0_0_0_12.8px_rgba(248,201,75,0.12)] transition hover:scale-105 hover:bg-[#ffd86d]"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 text-[#10172a]"
+                      aria-hidden="true"
+                    >
+                      <path d="M10 8l6 4-6 4V8z" fill="currentColor" />
+                    </svg>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -4005,9 +4078,9 @@ function App() {
 </section>
 
 
-{/* Section - 11 */}
+      {/* Section - 11 */}
 
- {/* =========================================================
+{/* =========================================================
     QUESTIONS, ANSWERED / FAQ
 ========================================================= */}
 
@@ -4976,6 +5049,25 @@ function App() {
 
 
 
+      <section className="relative overflow-hidden bg-[#fff0c9] px-6 py-14 sm:px-8 lg:px-0 lg:py-[56px]">
+        <div className="mx-auto grid w-full max-w-[1152px] grid-cols-1 items-center gap-6 rounded-[24px] border border-[rgba(248,201,75,0.34)] bg-[#071229] p-7 shadow-[0_28px_70px_0_rgba(4,9,20,0.18)] sm:grid-cols-[68px_minmax(0,1fr)] lg:h-[160.375px] lg:grid-cols-[68px_760.41px_200px] lg:gap-8 lg:p-[28.8px]">
+          <div className="grid h-[68px] w-[68px] place-items-center rounded-full border border-[#f8c94b]">
+            <svg viewBox="0 0 32 32" className="h-7 w-7 text-[#f8c94b]" fill="none" aria-hidden="true">
+              <path d="M16 3.5 26 7v7.3c0 6.2-4.1 11.5-10 14.2C10.1 25.8 6 20.5 6 14.3V7l10-3.5Z" stroke="currentColor" strokeWidth="1.5" />
+              <path d="m11.5 15.8 3 3 6-6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            </svg>
+          </div>
+          <div className="min-w-0">
+            <div className="font-['Inter'] text-[12px] font-bold leading-[16.2px] tracking-[1.56px] text-[#f8c94b]">YOUR CONFIDENCE, PROTECTED</div>
+            <h2 className="mt-1 font-['Hind_Siliguri'] text-[clamp(1.7rem,3vw,2.15rem)] font-bold leading-tight text-white">১০০% মানি-ব্যাক গ্যারান্টি</h2>
+            <p className="mt-1 font-['Hind_Siliguri'] text-sm leading-6 text-white/65">বইটি হাতে নিয়ে নিশ্চিন্তে দেখুন। কোনো কারণে সন্তুষ্ট না হলে আমাদের জানালেই ১০০% টাকা ফেরত।</p>
+          </div>
+          <a href="tel:01405458800" className="flex min-h-[80px] items-center justify-center rounded-[14px] bg-[#f8c94b] px-5 py-3 text-center font-['Hind_Siliguri'] text-sm font-bold leading-5 text-[#071229] transition hover:bg-[#ffd86d] lg:min-h-0">
+            <span><span className="block text-xs font-normal">কোনো প্রশ্ন আছে?</span><span className="block text-[1rem] font-bold">0140-545-8800-2</span><span className="block text-xs font-normal">কল করে কথা বলুন</span></span>
+          </a>
+        </div>
+      </section>
+
       {/* Section - 11 */}
 
 {/* =========================================================
@@ -5441,6 +5533,7 @@ function App() {
       className="
         relative
         z-20
+        pointer-events-auto
         mx-4
         mb-8
         rounded-[24px]
@@ -5779,6 +5872,8 @@ function App() {
                   border-[#CFC5B3]
                   bg-white
                   px-3
+                  text-[#000000]
+                  caret-[#000000]
                   outline-none
                   focus:border-[#F8C94B]
                   focus:ring-2
@@ -5826,8 +5921,9 @@ function App() {
                   px-3
                   font-['Hind_Siliguri']
                   text-[15.04px]
-                  text-[#0A1730]
-                  placeholder:text-[#0A1730]
+                  text-[#000000]
+                  caret-[#000000]
+                  placeholder:text-[#536174]
                   outline-none
                   focus:border-[#F8C94B]
                   focus:ring-2
@@ -5874,6 +5970,8 @@ function App() {
                 border-[#CFC5B3]
                 bg-white
                 px-3
+                text-[#000000]
+                caret-[#000000]
                 outline-none
                 focus:border-[#F8C94B]
                 focus:ring-2
@@ -5920,6 +6018,8 @@ function App() {
                 bg-white
                 px-3
                 py-2
+                text-[#000000]
+                caret-[#000000]
                 outline-none
                 focus:border-[#F8C94B]
                 focus:ring-2
