@@ -278,7 +278,7 @@ function App() {
         <div className="relative mx-auto max-w-[1240px] px-3 pb-4 pt-[92px] sm:px-5 sm:pt-[96px] lg:px-0 lg:pt-[84px]">
           <header className="fixed left-0 right-0 top-0 z-[100] h-[80px] min-h-[80px] w-full border-b border-white/8 bg-[#050811] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
             <div className="mx-auto flex h-[80px] min-h-[80px] w-full max-w-[1152px] items-center justify-between px-4 sm:px-6 lg:px-0">
-            <div className="flex items-center gap-3">
+            <a href="/" className="flex items-center gap-3" aria-label="Homepage">
               <div className="flex items-center gap-2 sm:gap-3">
                 <img
                   src={logo}
@@ -294,7 +294,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
 
             <nav className="hidden items-center gap-6 text-sm text-white/84 xl:flex">
               {[
@@ -305,7 +305,7 @@ function App() {
                 ["android-app", "App দেখুন"],
                 ["faq", "প্রশ্নোত্তর"],
               ].map(([id, label]) => (
-                <a key={id} href={`#${id}`} className={`whitespace-nowrap rounded-md px-2 py-1 transition ${activeSection === id ? "bg-white/12 text-white" : "hover:text-white"}`}>
+                <a key={id} href={`#${id}`} className={`whitespace-nowrap rounded-md px-2 py-1 font-medium transition ${activeSection === id ? "bg-white/12 text-white" : "hover:text-white"}`}>
                   {label}
                 </a>
               ))}
@@ -357,7 +357,7 @@ function App() {
                   ["#android-app", "App দেখুন"],
                   ["#faq", "প্রশ্নোত্তর"],
                 ].map(([href, label]) => (
-                  <a key={href} href={href} onClick={() => setMobileMenuOpen(false)} className={`whitespace-nowrap rounded-lg px-3 py-3 transition ${activeSection === href.slice(1) ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"}`}>
+                  <a key={href} href={href} onClick={() => setMobileMenuOpen(false)} className={`whitespace-nowrap rounded-lg px-3 py-3 font-medium transition ${activeSection === href.slice(1) ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"}`}>
                     {label}
                   </a>
                 ))}
