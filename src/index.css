@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   font-family:
@@ -35,6 +36,18 @@ a {
   text-decoration: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000000;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  transition: background-color 9999s ease-out 0s;
+}
+
 .included-card {
   position: relative;
   display: flex;
@@ -51,9 +64,7 @@ a {
   border-radius: 18px;
   background: rgba(255, 253, 248, 0.9);
   box-shadow: 0 16px 25.6px rgba(20, 32, 52, 0.06);
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .included-card-grid {
@@ -192,204 +203,5 @@ a {
 
   .included-card-description {
     font-size: 0.98rem;
-  }
-}
-/* =========================================
-   SMOOTH BOOK PAGE TURN
-========================================= */
-
-.book-spread-next,
-.book-spread-prev {
-  position: relative;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform, opacity;
-}
-
-/* =========================
-   NEXT PAGE
-========================= */
-
-.book-spread-next {
-  animation: bookPageNext 650ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
-
-@keyframes bookPageNext {
-  0% {
-    opacity: 0;
-    transform: translate3d(70px, 0, 0) rotateY(-7deg) scale(0.985);
-  }
-
-  35% {
-    opacity: 0.45;
-    transform: translate3d(35px, 0, 0) rotateY(-4deg) scale(0.992);
-  }
-
-  70% {
-    opacity: 0.85;
-    transform: translate3d(10px, 0, 0) rotateY(-1deg) scale(0.998);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
-  }
-}
-
-/* =========================================
-   REAL FLIPBOOK PAGE TURN
-========================================= */
-
-.book-sheet-next,
-.book-sheet-prev {
-  height: 100%;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-
-/* =========================================
-   FRONT + BACK OF THE PAPER
-========================================= */
-
-.book-sheet-front,
-.book-sheet-back {
-  position: absolute;
-  inset: 0;
-
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-
-  overflow: hidden;
-}
-
-/* =========================================
-   NEXT
-   RIGHT → LEFT
-========================================= */
-
-.book-sheet-next {
-  transform-origin: left center;
-
-  animation: flipBookNext 700ms cubic-bezier(0.42, 0, 0.58, 1) forwards;
-}
-
-/* Current page = front */
-
-.book-sheet-next .book-sheet-front {
-  transform: rotateY(0deg);
-}
-
-/* Next page = back */
-
-.book-sheet-next .book-sheet-back {
-  transform: rotateY(180deg);
-}
-
-@keyframes flipBookNext {
-  0% {
-    transform: rotateY(0deg);
-  }
-
-  50% {
-    transform: rotateY(-90deg);
-  }
-
-  100% {
-    transform: rotateY(-180deg);
-  }
-}
-
-/* =========================================
-   PREVIOUS
-   LEFT → RIGHT
-========================================= */
-
-.book-sheet-prev {
-  transform-origin: right center;
-
-  animation: flipBookPrev 700ms cubic-bezier(0.42, 0, 0.58, 1) forwards;
-}
-
-.book-sheet-prev .book-sheet-front {
-  transform: rotateY(0deg);
-}
-
-.book-sheet-prev .book-sheet-back {
-  transform: rotateY(-180deg);
-}
-
-@keyframes flipBookPrev {
-  0% {
-    transform: rotateY(0deg);
-  }
-
-  50% {
-    transform: rotateY(90deg);
-  }
-
-  100% {
-    transform: rotateY(180deg);
-  }
-}
-
-/* =========================================
-   PAPER SHADOW
-========================================= */
-
-.book-sheet-next,
-.book-sheet-prev {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* =========================================
-   PDF CANVAS
-========================================= */
-
-.book-sheet-front canvas,
-.book-sheet-back canvas {
-  display: block;
-  width: 100% !important;
-  height: auto !important;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* =========================================
-   PDF BOOK SIZE
-   SAME WIDTH AS ORIGINAL IMAGE
-========================================= */
-
-.pdf-book-spread {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.pdf-book-spread .pdf-page {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-.pdf-book-spread .react-pdf__Page {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-}
-
-.pdf-book-spread .react-pdf__Page canvas {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-@media (max-width: 700px) {
-  .pdf-book-spread {
-    width: 100%;
   }
 }
