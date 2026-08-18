@@ -435,11 +435,33 @@ function App() {
                 বাংলাদেশে আমরাই প্রথম
               </div>
 
-              <h1 className="mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]">
-                Oxford 3000 Vocab
+              <h1
+                className="mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
+                aria-label="Oxford 3000 Vocab"
+              >
+                {['Oxford', '3000', 'Vocab'].map((word, index) => (
+                  <span
+                    key={word}
+                    className="hero-word mr-[0.28em] last:mr-0"
+                    style={{ animationDelay: `${index * 140}ms` }}
+                  >
+                    {word}
+                  </span>
+                ))}
               </h1>
-              <h2 className="mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]">
-                Complete Learning System
+              <h2
+                className="mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
+                aria-label="Complete Learning System"
+              >
+                {['Complete', 'Learning', 'System'].map((word, index) => (
+                  <span
+                    key={word}
+                    className="hero-word mr-[0.28em] last:mr-0"
+                    style={{ animationDelay: `${420 + index * 140}ms` }}
+                  >
+                    {word}
+                  </span>
+                ))}
               </h2>
 
               <p className="mt-8 max-w-[34rem] text-[0.98rem] leading-8 text-white/65 sm:text-[1.02rem]">
