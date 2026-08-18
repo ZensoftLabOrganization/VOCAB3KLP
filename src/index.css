@@ -281,3 +281,32 @@ textarea:-webkit-autofill:focus {
     animation: none;
   }
 }
+
+.nav-menu-link {
+  position: relative;
+}
+
+.nav-menu-link::after {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.15rem;
+  left: 0.5rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #f8c94b;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 220ms ease;
+}
+
+.nav-menu-link:hover::after,
+.nav-menu-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu-link::after {
+    transition: none;
+  }
+}

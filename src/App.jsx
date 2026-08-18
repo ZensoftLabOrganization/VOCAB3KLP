@@ -207,7 +207,6 @@ function App() {
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [bookPage, setBookPage] = useState(0);
   const [pdfPages, setPdfPages] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
@@ -270,9 +269,6 @@ function App() {
     ];
 
     const updateNavigation = () => {
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0);
-
       const marker = window.scrollY + window.innerHeight * 0.28;
       let current = "";
       sectionIds.forEach((id) => {
@@ -363,7 +359,7 @@ function App() {
                 ["android-app", "App দেখুন"],
                 ["faq", "প্রশ্নোত্তর"],
               ].map(([id, label]) => (
-                <a key={id} href={`#${id}`} className={`whitespace-nowrap rounded-md px-2 py-1 font-medium transition ${activeSection === id ? "bg-white/12 text-white" : "hover:text-white"}`}>
+                <a key={id} href={`#${id}`} className={`nav-menu-link whitespace-nowrap rounded-md px-2 py-1 font-medium transition ${activeSection === id ? "bg-white/12 text-white" : "hover:text-white"}`}>
                   {label}
                 </a>
               ))}
@@ -415,7 +411,7 @@ function App() {
                   ["#android-app", "App দেখুন"],
                   ["#faq", "প্রশ্নোত্তর"],
                 ].map(([href, label]) => (
-                  <a key={href} href={href} onClick={() => setMobileMenuOpen(false)} className={`whitespace-nowrap rounded-lg px-3 py-3 font-medium transition ${activeSection === href.slice(1) ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"}`}>
+                  <a key={href} href={href} onClick={() => setMobileMenuOpen(false)} className={`nav-menu-link whitespace-nowrap rounded-lg px-3 py-3 font-medium transition ${activeSection === href.slice(1) ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"}`}>
                     {label}
                   </a>
                 ))}
@@ -425,7 +421,6 @@ function App() {
               </nav>
             )}
             </div>
-            <div className="pointer-events-none absolute bottom-0 left-0 h-[2px] bg-white transition-[width] duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
           </header>
 
           <div className="grid items-center gap-6 px-3 pb-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:pt-24">
