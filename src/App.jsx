@@ -207,6 +207,7 @@ function App() {
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [bookPage, setBookPage] = useState(0);
   const [pdfPages, setPdfPages] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
@@ -269,6 +270,9 @@ function App() {
     ];
 
     const updateNavigation = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0);
+
       const marker = window.scrollY + window.innerHeight * 0.28;
       let current = "";
       sectionIds.forEach((id) => {
@@ -330,7 +334,7 @@ function App() {
       <section id="top" className="relative overflow-hidden bg-[#060b18]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(65,118,255,0.34),transparent_0_22%),radial-gradient(circle_at_82%_70%,rgba(249,199,75,0.12),transparent_0_18%),linear-gradient(180deg,#060b18_0%,#0b172f_100%)]" />
         <div className="relative mx-auto max-w-[1240px] px-3 pb-4 pt-[92px] sm:px-5 sm:pt-[96px] lg:px-0 lg:pt-[84px]">
-          <header className="fixed left-0 right-0 top-0 z-[100] h-[80px] min-h-[80px] w-full border-b border-white/8 bg-[#050811] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+          <header className="fixed left-0 right-0 top-0 z-[100] h-[80px] min-h-[80px] w-full bg-[#050811] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
             <div className="mx-auto flex h-[80px] min-h-[80px] w-full max-w-[1152px] items-center justify-between px-4 sm:px-6 lg:px-0">
             <a href="/" className="flex items-center gap-3" aria-label="Homepage">
               <div className="flex items-center gap-2 sm:gap-3">
@@ -421,6 +425,7 @@ function App() {
               </nav>
             )}
             </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 h-[2px] bg-[#f8c94b] transition-[width] duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
           </header>
 
           <div className="grid items-center gap-6 px-3 pb-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:pt-24">
