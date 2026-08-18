@@ -210,14 +210,52 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [bookPage, setBookPage] = useState(0);
   const [pdfPages, setPdfPages] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [flipDirection, setFlipDirection] = useState("next");
+  const [mobilePage, setMobilePage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+    handleResize();
+    mediaQuery.addEventListener("change", handleResize);
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  const pdfSpreadCount = Math.ceil(pdfPages / 2);
 
   const handlePdfLoad = ({ numPages }) => setPdfPages(numPages);
   const handleNextPage = () => {
-    if (bookPage === 0) setBookPage(1);
-    else if (pdfPages > 0) setBookPage((page) => Math.min(page + 1, pdfPages));
+    if (isFlipping) return;
+    if (isMobile) {
+      if (bookPage === 0) {
+        setMobilePage(1);
+        setBookPage(1);
+      } else if (pdfPages > 0) {
+        setMobilePage((page) => Math.min(page + 1, pdfPages));
+      }
+      return;
+    }
+    if (bookPage === 0) {
+      setBookPage(1);
+    } else if (bookPage < pdfSpreadCount) {
+      setFlipDirection("next");
+      setIsFlipping(true);
+    }
   };
   const handlePreviousPage = () => {
-    setBookPage((page) => Math.max(0, page - 1));
+    if (isFlipping) return;
+    if (isMobile) {
+      if (mobilePage <= 1) setBookPage(0);
+      else setMobilePage((page) => Math.max(1, page - 1));
+      return;
+    }
+    if (bookPage === 1) setBookPage(0);
+    else if (bookPage > 1) {
+      setFlipDirection("prev");
+      setIsFlipping(true);
+    }
   };
 
   useEffect(() => {
@@ -670,7 +708,81 @@ function App() {
                     loading={<div className="flex min-h-[420px] items-center justify-center text-sm text-[#8B6500]">PDF loading...</div>}
                     error={<div className="flex min-h-[420px] items-center justify-center text-sm text-red-600">PDF load করা যাচ্ছে না।</div>}
                   >
-                    <Page pageNumber={Math.min(bookPage, pdfPages || 1)} width={860} renderAnnotationLayer renderTextLayer />
+                    {isMobile ? (
+                      <Page
+                        key={`mobile-page-${mobilePage}`}
+                        pageNumber={mobilePage}
+                        width={430}
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                        renderMode="canvas"
+                        className="block h-auto w-full [&>canvas]:block [&>canvas]:h-auto [&>canvas]:w-full"
+                      />
+                    ) : (
+                      <div className="relative flex w-full overflow-hidden bg-[#fffdf7] [perspective:1800px]">
+                        <div className="relative z-10 flex w-full will-change-transform">
+                          <div className="relative min-w-0 w-1/2 overflow-hidden">
+                            <Page
+                              key={`current-${bookPage * 2 - 1}`}
+                              pageNumber={bookPage * 2 - 1}
+                              width={430}
+                              renderTextLayer={false}
+                              renderAnnotationLayer={false}
+                              renderMode="canvas"
+                              className="block h-auto w-full [&>canvas]:block [&>canvas]:h-auto [&>canvas]:w-full"
+                            />
+                          </div>
+                          <div className="relative z-20 w-[3px] shrink-0 bg-[#10243b] shadow-[0_0_10px_rgba(0,0,0,0.18)]" />
+                          <div className="relative min-w-0 w-1/2 overflow-hidden">
+                            {bookPage * 2 <= pdfPages && (
+                              <Page
+                                key={`current-${bookPage * 2}`}
+                                pageNumber={bookPage * 2}
+                                width={430}
+                                renderTextLayer={false}
+                                renderAnnotationLayer={false}
+                                renderMode="canvas"
+                                className="block h-auto w-full [&>canvas]:block [&>canvas]:h-auto [&>canvas]:w-full"
+                              />
+                            )}
+                          </div>
+                        </div>
+                        {isFlipping && (
+                          <div
+                            className={`absolute inset-y-0 z-40 w-1/2 ${flipDirection === "next" ? "right-0 origin-left book-sheet-next" : "left-0 origin-right book-sheet-prev"}`}
+                            onAnimationEnd={() => {
+                              setBookPage((page) => flipDirection === "next" ? page + 1 : Math.max(1, page - 1));
+                              setIsFlipping(false);
+                            }}
+                          >
+                            <div className="book-sheet-front absolute inset-0 overflow-hidden bg-[#fffdf7]">
+                              <Page
+                                pageNumber={flipDirection === "next" ? bookPage * 2 : bookPage * 2 - 1}
+                                width={430}
+                                renderTextLayer={false}
+                                renderAnnotationLayer={false}
+                                renderMode="canvas"
+                                className="block h-auto w-full [&>canvas]:block [&>canvas]:h-auto [&>canvas]:w-full"
+                              />
+                            </div>
+                            <div className="book-sheet-back absolute inset-0 overflow-hidden bg-[#fffdf7]">
+                              {(flipDirection === "next"
+                                ? bookPage * 2 + 1 <= pdfPages
+                                : bookPage * 2 - 2 >= 1) && (
+                                <Page
+                                  pageNumber={flipDirection === "next" ? bookPage * 2 + 1 : bookPage * 2 - 2}
+                                  width={430}
+                                  renderTextLayer={false}
+                                  renderAnnotationLayer={false}
+                                  renderMode="canvas"
+                                  className="block h-auto w-full [&>canvas]:block [&>canvas]:h-auto [&>canvas]:w-full"
+                                />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </Document>
                 </div>
               )}
@@ -684,6 +796,7 @@ function App() {
     <button
       type="button"
       onClick={handlePreviousPage}
+      disabled={bookPage === 0 || isFlipping}
       className="
         w-[164px]
         h-[56px]
@@ -703,6 +816,8 @@ function App() {
         font-semibold
         leading-none
         whitespace-nowrap
+        disabled:cursor-not-allowed
+        disabled:opacity-60
       "
     >
       <span
@@ -762,7 +877,12 @@ function App() {
     <button
       type="button"
       onClick={handleNextPage}
-      disabled={pdfPages > 0 && bookPage >= pdfPages}
+      disabled={
+        isFlipping ||
+        (isMobile
+          ? pdfPages > 0 && mobilePage >= pdfPages
+          : pdfPages > 0 && bookPage >= pdfSpreadCount)
+      }
       className="
         w-[154px]
         h-[56px]
