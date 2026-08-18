@@ -3,11 +3,20 @@ import logo from "./images/logo.png";
 import heroArtwork from "./images/image1.png";
 import videoThumb from "./images/image2.png";
 import bookImage from "./images/image3.png";
+import pdfFile from "./assets/PDF/Oxford_3k.pdf";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 import bookDetail from "./images/image4.png";
 import androidApp from "./images/image5.png";
 import image6 from "./images/image6.png";
 import infoIcon from "./assets/Info icon.svg";
 // bookDetail (image4.png) removed per request
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url,
+).toString();
 
 const featureCards = [
   {
@@ -199,6 +208,17 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [bookPage, setBookPage] = useState(0);
+  const [pdfPages, setPdfPages] = useState(0);
+
+  const handlePdfLoad = ({ numPages }) => setPdfPages(numPages);
+  const handleNextPage = () => {
+    if (bookPage === 0) setBookPage(1);
+    else if (pdfPages > 0) setBookPage((page) => Math.min(page + 1, pdfPages));
+  };
+  const handlePreviousPage = () => {
+    setBookPage((page) => Math.max(0, page - 1));
+  };
 
   useEffect(() => {
     const sectionIds = [
@@ -636,11 +656,24 @@ function App() {
 
           <div className="mt-8">
             <div className="mx-auto max-w-[920px] relative overflow-hidden">
-              <img
-                src={bookImage}
-                alt="Open book preview"
-                className="mx-auto w-[min(860px,88%)] h-auto rounded-[8px] drop-shadow-[0_18px_40px_rgba(16,20,24,0.12)] mb-8 object-contain"
-              />
+              {bookPage === 0 ? (
+                <img
+                  src={bookImage}
+                  alt="Open book preview"
+                  className="mx-auto mb-8 h-auto w-[min(860px,88%)] rounded-[8px] object-contain drop-shadow-[0_18px_40px_rgba(16,20,24,0.12)]"
+                />
+              ) : (
+                <div className="mx-auto mb-8 w-[min(860px,88%)] overflow-hidden rounded-[8px] bg-[#fffdf7] shadow-[0_18px_40px_rgba(16,20,24,0.12)]">
+                  <Document
+                    file={pdfFile}
+                    onLoadSuccess={handlePdfLoad}
+                    loading={<div className="flex min-h-[420px] items-center justify-center text-sm text-[#8B6500]">PDF loading...</div>}
+                    error={<div className="flex min-h-[420px] items-center justify-center text-sm text-red-600">PDF load করা যাচ্ছে না।</div>}
+                  >
+                    <Page pageNumber={Math.min(bookPage, pdfPages || 1)} width={860} renderAnnotationLayer renderTextLayer />
+                  </Document>
+                </div>
+              )}
 
  <div className="mt-[24px] flex flex-col items-center">
 
@@ -649,6 +682,8 @@ function App() {
 
     {/* Previous Button */}
     <button
+      type="button"
+      onClick={handlePreviousPage}
       className="
         w-[164px]
         h-[56px]
@@ -725,7 +760,9 @@ function App() {
 
     {/* ================= NEXT BUTTON ================= */}
     <button
-      disabled
+      type="button"
+      onClick={handleNextPage}
+      disabled={pdfPages > 0 && bookPage >= pdfPages}
       className="
         w-[154px]
         h-[56px]
@@ -745,8 +782,8 @@ function App() {
         font-semibold
         leading-none
         whitespace-nowrap
-        opacity-60
-        cursor-not-allowed
+        disabled:cursor-not-allowed
+        disabled:opacity-60
       "
     >
       <span>
