@@ -888,15 +888,15 @@ function App() {
         h-[56px]
         rounded-[14px]
         border
-        border-[#E2DAC9]
-        bg-transparent
+        border-[#D4BC88]
+        bg-[#FFF8E8]
         px-[20px]
         py-[9px]
         flex
         items-center
         justify-center
         gap-[10px]
-        text-[#C0B49C]
+        text-[#17140D]
         font-['Hind_Siliguri']
         text-[18px]
         font-semibold
