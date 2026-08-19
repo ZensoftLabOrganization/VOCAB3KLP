@@ -827,7 +827,7 @@ function App() {
         <div className="absolute right-0 top-0 h-32 w-32 rounded-full border border-[#d9d3c8] opacity-60" />
         <div className="absolute left-0 bottom-0 h-28 w-28 rounded-full border border-[#d9d3c8] opacity-60" />
 
-        <div className="mx-auto max-w-[1152px] text-center">
+        <div className="mx-auto max-w-[1200px] text-center">
           <div className="text-[0.72rem] font-bold uppercase tracking-[0.42em] text-[#af8f46]">
             Included with the book
           </div>
