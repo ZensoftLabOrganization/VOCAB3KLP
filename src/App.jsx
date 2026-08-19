@@ -747,7 +747,7 @@ function App() {
             </div>
           </div>
 
-          <div className="mx-3 grid gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
+          <div className="mx-3 grid grid-cols-2 gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
             {[
               ["৩,০০০", "মূল শব্দ"],
               ["৩,০০০", "Dedicated Video"],
