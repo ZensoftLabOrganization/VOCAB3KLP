@@ -758,7 +758,7 @@ function App() {
             ].map(([title, subtitle]) => (
               <div
                 key={title + subtitle}
-                className="border-l border-white/10 pl-4 first:border-l-0 first:pl-0 lg:px-4"
+                className="hero-stat border-l border-white/10 pl-4 first:border-l-0 first:pl-0 lg:px-4"
               >
                 <div className="text-2xl font-black text-[#f7c84f]">
                   {title}

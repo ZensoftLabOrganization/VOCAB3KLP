@@ -906,6 +906,11 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .hero-stat:nth-child(odd) {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
   .hero-title-primary {
     width: 310px;
     max-width: 100%;
