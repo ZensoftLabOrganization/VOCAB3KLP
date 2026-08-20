@@ -907,6 +907,34 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .order-copy {
+    text-align: center;
+  }
+
+  .order-copy h2 {
+    white-space: normal;
+  }
+
+  .order-copy > p span,
+  .order-copy .order-benefit-grid p {
+    white-space: normal;
+  }
+
+  .order-copy .order-benefit-grid > div {
+    text-align: center;
+  }
+
+  .order-copy .order-benefit-grid p {
+    width: auto;
+    max-width: calc(100% - 20px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .order-copy .order-benefit-grid br {
+    display: none;
+  }
+
   .faq-sidebar {
     align-items: center;
     text-align: center;

@@ -5397,7 +5397,7 @@ function App() {
         LEFT SIDE CONTENT
     ===================================================== */}
           <div
-            className="
+            className="order-copy
         relative
         z-10
         px-6
@@ -5475,7 +5475,7 @@ function App() {
           BENEFIT CARDS
       ================================================= */}
             <div
-              className="
+              className="order-benefit-grid
           mt-[28px]
           grid
           w-full
