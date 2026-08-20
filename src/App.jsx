@@ -1807,8 +1807,8 @@ function App() {
 
             {/* ORDER BUTTON */}
             <a
-              href="#"
-              className="
+              href="#order"
+              className="button button--primary
           flex
           h-[48px]
           min-w-[198px]
