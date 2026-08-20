@@ -919,19 +919,6 @@ textarea:-webkit-autofill:focus {
     white-space: normal;
   }
 
-  .decision-section article {
-    text-align: center;
-  }
-
-  .decision-section article > div:first-child {
-    justify-content: center;
-  }
-
-  .decision-section article > .absolute {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .hero-stat:nth-child(odd) {
     border-left: 0 !important;
     padding-left: 0 !important;
