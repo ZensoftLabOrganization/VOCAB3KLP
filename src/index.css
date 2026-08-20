@@ -933,6 +933,11 @@ textarea:-webkit-autofill:focus {
     white-space: normal !important;
   }
 
+  .decision-cta {
+    align-items: center;
+    text-align: center;
+  }
+
   .decision-section article > .absolute {
     left: 50%;
     transform: translateX(-50%);
