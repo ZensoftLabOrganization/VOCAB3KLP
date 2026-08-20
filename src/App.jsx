@@ -5921,7 +5921,7 @@ function App() {
 
                 {/* Price details */}
                 <div
-                  className="
+                  className="order-price-details
               mt-[9px]
               flex
               items-center
@@ -5947,7 +5947,7 @@ function App() {
 
                 {/* COD chip */}
                 <div
-                  className="
+                  className="order-cod-chip
               mt-[14px]
               inline-flex
               h-[25.22px]

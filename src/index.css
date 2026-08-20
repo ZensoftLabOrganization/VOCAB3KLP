@@ -907,6 +907,18 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .order-price-details {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .order-cod-chip {
+    display: flex;
+    width: max-content;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .order-delivery-ribbon {
     flex-direction: row;
     gap: 8px;
