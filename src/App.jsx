@@ -3961,7 +3961,7 @@ function App() {
         LEFT CONTENT
     ======================================================= */}
           <div
-            className="
+            className="android-copy
         flex
         w-full
         max-w-[447.55px]

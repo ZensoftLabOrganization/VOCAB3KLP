@@ -907,6 +907,25 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .android-copy {
+    align-items: center;
+    text-align: center;
+  }
+
+  .android-copy > div:first-child {
+    justify-content: center;
+  }
+
+  .android-copy .border-l-2 {
+    justify-content: center;
+    border-left-width: 0;
+    padding-left: 0;
+  }
+
+  .android-copy > div:last-child {
+    justify-content: center;
+  }
+
   .decision-section article > div:first-child {
     display: block;
   }
