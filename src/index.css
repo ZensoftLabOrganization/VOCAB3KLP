@@ -79,6 +79,7 @@ textarea:-webkit-autofill:focus {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 18px;
+  justify-items: center;
 }
 
 .mastery-loop-grid {
