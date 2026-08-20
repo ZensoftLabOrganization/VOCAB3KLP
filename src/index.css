@@ -102,13 +102,16 @@ textarea:-webkit-autofill:focus {
 
 @media (min-width: 1200px) {
   .included-card-grid {
-    display: flex;
-    width: 1152px;
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
     height: auto;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
-    flex-shrink: 0;
+  }
+
+  .included-card {
+    max-width: none;
   }
 }
 

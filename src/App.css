@@ -6921,3 +6921,854 @@ button {
     height: 279px;
   }
 }
+/* =========================================================
+   MOBILE RESPONSIVE FIX
+   Existing desktop design unchanged
+========================================================= */
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img,
+  svg,
+  canvas,
+  iframe {
+    max-width: 100%;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  header {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  header img {
+    max-width: 38px !important;
+    height: auto !important;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+
+  #top {
+    width: 100%;
+    overflow: hidden !important;
+  }
+
+  #top h1,
+  #top h2,
+  #top h3 {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  #top h1 {
+    font-size: clamp(32px, 10vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+
+  #top h2 {
+    font-size: clamp(25px, 8vw, 40px) !important;
+    line-height: 1.15 !important;
+  }
+
+  #top .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #top .relative.justify-self-end {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+
+  #top .relative.justify-self-end img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* =========================
+     STATS
+  ========================= */
+
+  #top .mx-3.grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0 !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+  }
+
+  #top .mx-3.grid > div {
+    min-width: 0 !important;
+    padding: 12px 8px !important;
+  }
+
+  #top .mx-3.grid .text-2xl {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  #top .mx-3.grid .text-sm {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* =========================
+     ALL SECTIONS
+  ========================= */
+
+  section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  /* =========================
+     VIDEO
+  ========================= */
+
+  .video-section,
+  #how-it-works {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .video-card,
+  #how-it-works .aspect-video {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 190px !important;
+  }
+
+  /* =========================
+     FEATURE CARDS
+  ========================= */
+
+  .feature-grid,
+  .included-card-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .feature-card,
+  .included-card {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* =========================
+     INSIDE BOOK
+  ========================= */
+
+  .inside-book-section {
+    width: 100% !important;
+    min-height: auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .inside-book-header {
+    width: 100% !important;
+  }
+
+  .inside-book-header h2 {
+    font-size: clamp(28px, 8vw, 39px) !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+
+  .inside-book-header p {
+    font-size: 12px !important;
+    line-height: 20px !important;
+  }
+
+  .inside-book-wrapper {
+    width: 100% !important;
+    overflow: hidden !important;
+    margin-top: 30px !important;
+  }
+
+  .inside-book {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+  }
+
+  .book-left-page,
+  .book-right-page {
+    min-width: 0 !important;
+  }
+
+  /* =========================
+     PDF
+  ========================= */
+
+  .pdf-viewer-shell,
+  .pdf-frame,
+  .pdf-page-viewport,
+  .pdf-mobile-single-stage,
+  .pdf-mobile-single-sheet {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .pdf-mobile-single-sheet canvas,
+  .pdf-page canvas,
+  .pdf-preload-page canvas,
+  .pdf-frame canvas {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  .pdf-controls {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .pdf-control-button {
+    min-width: 0 !important;
+    flex: 1 !important;
+    height: 44px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+
+  /* =========================
+     MASTERY LOOP
+  ========================= */
+
+  .mastery-loop-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .mastery-loop-grid > * {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* =========================
+     STUDENT STORIES
+  ========================= */
+
+  .student-proof {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow: hidden !important;
+  }
+
+  .student-stories {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .student-story-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .story-visual {
+    width: 100% !important;
+  }
+
+  /* =========================
+     FAQ
+  ========================= */
+
+  .faq-section {
+    width: 100% !important;
+    padding: 55px 0 !important;
+    overflow: hidden !important;
+  }
+
+  .faq-container {
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .faq-intro h2 {
+    font-size: 30px !important;
+    line-height: 1.25 !important;
+  }
+
+  .faq-list {
+    width: 100% !important;
+  }
+
+  .faq-list summary {
+    min-height: 55px !important;
+    padding: 15px 0 !important;
+    gap: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .faq-list details p {
+    padding-right: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* =========================
+     GUARANTEE
+  ========================= */
+
+  .guarantee-section {
+    width: 100% !important;
+    padding: 40px 0 !important;
+  }
+
+  .guarantee-container {
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    padding: 24px !important;
+  }
+
+  .guarantee-icon {
+    margin-right: 0 !important;
+  }
+
+  .guarantee-content h2 {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+  }
+
+  .guarantee-content p {
+    font-size: 14px !important;
+    line-height: 23px !important;
+  }
+
+  .guarantee-contact {
+    width: 100% !important;
+  }
+
+  /* =========================
+     ORDER SECTION
+  ========================= */
+
+  #order {
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow: hidden !important;
+  }
+
+  #order > .relative.mx-auto {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 22px !important;
+  }
+
+  #order h2 {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    font-size: clamp(27px, 8vw, 36px) !important;
+    line-height: 1.45 !important;
+  }
+
+  #order .whitespace-nowrap {
+    white-space: normal !important;
+  }
+
+  /* Order benefit cards */
+
+  #order .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Order form */
+
+  #order form {
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    border-radius: 18px !important;
+  }
+
+  #order form input,
+  #order form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #order form .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Delivery ribbon */
+
+  #order form .whitespace-nowrap {
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  /* Order summary */
+
+  #order form .flex.items-start.justify-between {
+    gap: 10px !important;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .site-footer {
+    width: 100% !important;
+    overflow: hidden !important;
+    padding: 40px 16px 20px !important;
+  }
+
+  .footer-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex-direction: column !important;
+    gap: 25px !important;
+  }
+
+  .footer-left,
+  .footer-links {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .footer-links {
+    align-items: flex-start !important;
+  }
+
+  .footer-links a,
+  .footer-links a:first-child,
+  .footer-links a:nth-child(2),
+  .footer-links .back-top {
+    width: auto !important;
+    margin-left: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .footer-left p {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .footer-bottom {
+    width: 100% !important;
+  }
+
+  /* =========================
+     SMALL MOBILE
+  ========================= */
+
+  @media (max-width: 380px) {
+    #top .mx-3.grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    #top .mx-3.grid > div {
+      border-left: 0 !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    #top .mx-3.grid > div:first-child {
+      border-top: 0 !important;
+    }
+
+    .pdf-control-button {
+      font-size: 11px !important;
+    }
+
+    #order form {
+      padding: 13px !important;
+    }
+
+    .guarantee-container {
+      padding: 20px !important;
+    }
+  }
+}
+#decision > div > div:first-child {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: 1fr !important;
+  gap: 30px !important;
+}
+
+#decision > div > div:first-child > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* IMPORTANT:
+     Fix "শুধু বই নয়—পুরো একটি" clipping
+  */
+
+/* Description */
+
+#decision p {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  font-size: 14px !important;
+  line-height: 23px !important;
+
+  overflow-wrap: break-word !important;
+}
+
+/* Book image */
+
+#decision img {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 520px !important;
+
+  height: auto !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  object-fit: contain !important;
+}
+
+/* =====================================================
+     INCLUDED / FEATURE CARDS
+  ===================================================== */
+
+.included-card-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  grid-template-columns: 1fr !important;
+
+  gap: 14px !important;
+}
+
+.included-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* =====================================================
+     MASTERY LOOP
+  ===================================================== */
+
+.mastery-loop-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  grid-template-columns: 1fr !important;
+
+  gap: 14px !important;
+}
+
+/* =====================================================
+     STUDENT STORIES
+  ===================================================== */
+
+.student-stories {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  grid-template-columns: 1fr !important;
+
+  gap: 20px !important;
+}
+
+.student-story-card {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* =====================================================
+     FAQ
+  ===================================================== */
+
+.faq-container {
+  width: calc(100% - 32px) !important;
+  max-width: 100% !important;
+
+  grid-template-columns: 1fr !important;
+
+  gap: 30px !important;
+}
+
+.faq-intro h2 {
+  font-size: 30px !important;
+  line-height: 1.25 !important;
+
+  white-space: normal !important;
+}
+
+.faq-list {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.faq-list summary {
+  white-space: normal !important;
+  min-height: 52px !important;
+  gap: 10px !important;
+}
+
+.faq-list details p {
+  padding-right: 0 !important;
+}
+
+/* =====================================================
+     GUARANTEE
+  ===================================================== */
+
+.guarantee-container {
+  width: calc(100% - 32px) !important;
+  max-width: 100% !important;
+
+  flex-direction: column !important;
+  align-items: flex-start !important;
+
+  gap: 20px !important;
+
+  padding: 24px !important;
+}
+
+.guarantee-icon {
+  margin-right: 0 !important;
+}
+
+.guarantee-content {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.guarantee-content h2 {
+  font-size: 28px !important;
+  line-height: 1.3 !important;
+}
+
+.guarantee-content p {
+  font-size: 14px !important;
+  line-height: 23px !important;
+}
+
+.guarantee-contact {
+  width: 100% !important;
+}
+
+/* =====================================================
+     ORDER SECTION
+  ===================================================== */
+
+#order {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  overflow-x: hidden !important;
+
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+#order h2 {
+  white-space: normal !important;
+
+  font-size: clamp(27px, 8vw, 38px) !important;
+  line-height: 1.35 !important;
+
+  overflow-wrap: normal !important;
+}
+
+#order form {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding: 16px !important;
+
+  box-sizing: border-box !important;
+}
+
+#order form input,
+#order form textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  box-sizing: border-box !important;
+}
+
+#order form .grid {
+  grid-template-columns: 1fr !important;
+}
+
+/* =====================================================
+     FOOTER
+  ===================================================== */
+
+.site-footer {
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.footer-container {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+
+  flex-direction: column !important;
+
+  gap: 25px !important;
+}
+
+.footer-left,
+.footer-links {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.footer-links {
+  align-items: flex-start !important;
+}
+
+.footer-links a,
+.footer-links a:first-child,
+.footer-links a:nth-child(2),
+.footer-links .back-top {
+  width: auto !important;
+
+  margin-left: 0 !important;
+
+  justify-content: flex-start !important;
+}
+
+.footer-left p {
+  max-width: 100% !important;
+
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* =====================================================
+     VERY SMALL PHONE
+  ===================================================== */
+
+@media (max-width: 380px) {
+  #top h1 {
+    font-size: 29px !important;
+  }
+
+  #top h2 {
+    font-size: 24px !important;
+  }
+
+  #decision img {
+    max-width: 100% !important;
+  }
+
+  #order form {
+    padding: 14px !important;
+  }
+}
+/* =====================================================
+   DECISION — FINAL MOBILE FIX
+===================================================== */
+
+@media (max-width: 767px) {
+  .decision-section {
+    width: 100%;
+    padding: 55px 16px;
+    overflow-x: hidden;
+  }
+
+  .decision-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .decision-heading {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .decision-heading h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+
+    letter-spacing: -0.3px;
+  }
+
+  .decision-heading p {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 14px !important;
+    line-height: 23px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .decision-heading h2 {
+    font-size: 25px !important;
+  }
+
+  .decision-heading p {
+    font-size: 13px !important;
+  }
+}

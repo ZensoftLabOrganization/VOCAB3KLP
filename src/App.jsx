@@ -595,7 +595,7 @@ function App() {
 
               <a
                 href="#order"
-                className="hidden h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
+                className="hidden h-[46.938px] min-h-[46.4px] w-full max-w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
               >
                 এখনই অর্ডার করুন
                 <svg
@@ -657,7 +657,7 @@ function App() {
               </div>
 
               <h1
-                className="mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
+                className="mt-8 whitespace-normal text-[clamp(2rem,9vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98] lg:whitespace-nowrap lg:text-[clamp(2.15rem,5vw,4.12rem)]"
                 aria-label="Oxford 3000 Vocab"
               >
                 {["Oxford", "3000", "Vocab"].map((word, index) => (
@@ -671,7 +671,7 @@ function App() {
                 ))}
               </h1>
               <h2
-                className="mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
+                className="mt-3 whitespace-normal text-[clamp(1.8rem,8vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02] lg:whitespace-nowrap lg:text-[clamp(2rem,4.1vw,3.18rem)]"
                 aria-label="Complete Learning System"
               >
                 {["Complete", "Learning", "System"].map((word, index) => (
@@ -738,7 +738,7 @@ function App() {
               </div>
             </div>
 
-            <div className="relative justify-self-end w-[min(100%,640px)] translate-x-3 lg:translate-x-6">
+            <div className="relative justify-self-center w-[min(100%,420px)] translate-x-0 lg:justify-self-end lg:w-[min(100%,640px)] lg:translate-x-6">
               <img
                 src={heroArtwork}
                 alt="Oxford 3000 vocabulary pack"
@@ -747,7 +747,7 @@ function App() {
             </div>
           </div>
 
-          <div className="mx-3 grid gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
+          <div className="mx-3 grid grid-cols-2 gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
             {[
               ["৩,০০০", "মূল শব্দ"],
               ["৩,০০০", "Dedicated Video"],
@@ -827,7 +827,7 @@ function App() {
         <div className="absolute right-0 top-0 h-32 w-32 rounded-full border border-[#d9d3c8] opacity-60" />
         <div className="absolute left-0 bottom-0 h-28 w-28 rounded-full border border-[#d9d3c8] opacity-60" />
 
-        <div className="mx-auto max-w-[1152px] text-center">
+        <div className="mx-auto max-w-[1200px] text-center">
           <div className="text-[0.72rem] font-bold uppercase tracking-[0.42em] text-[#af8f46]">
             Included with the book
           </div>
@@ -1362,14 +1362,18 @@ function App() {
     w-full
     max-w-[560px]
     font-['Hind_Siliguri']
-    text-[46.08px]
+    text-[30px]
     font-bold
-    leading-[52.53px]
+    leading-[36px]
     tracking-[-0.79px]
     text-white
+    sm:text-[36px]
+    sm:leading-[43px]
+    lg:text-[46.08px]
+    lg:leading-[52.53px]
   "
               >
-                <span className="block whitespace-nowrap font-['Hind_Siliguri'] font-bold">
+                <span className="block whitespace-normal lg:whitespace-nowrap font-['Hind_Siliguri'] font-bold">
                   শুধু বই নয়—পুরো একটি
                 </span>
 
@@ -5426,18 +5430,19 @@ function App() {
       ================================================= */}
             <h2
               className="
-          mt-[19px]
-          whitespace-nowrap
-          font-['Hind_Siliguri']
-          text-[30px]
-          font-bold
-          leading-[1.55]
-          tracking-[-0.02em]
-          text-white
-          sm:text-[36px]
-          lg:text-[36px]
-          lg:leading-[62px]
-        "
+  mt-[19px]
+  whitespace-normal
+  font-['Hind_Siliguri']
+  text-[30px]
+  font-bold
+  leading-[1.4]
+  tracking-[-0.02em]
+  text-white
+  sm:text-[36px]
+  lg:whitespace-nowrap
+  lg:text-[36px]
+  lg:leading-[62px]
+"
             >
               আগে বই বুঝে নিন,
               <br />
@@ -5459,7 +5464,7 @@ function App() {
           lg:text-[20px]
         "
             >
-              <span className="block whitespace-nowrap">
+              <span className="block whitespace-normal lg:whitespace-nowrap">
                 সারা দেশে ক্যাশ অন ডেলিভারি — ডেলিভারি চার্জ মাত্র
               </span>
 
@@ -5703,15 +5708,16 @@ function App() {
 
               <p
                 className="
-            m-0
-            whitespace-nowrap
-            font-['Hind_Siliguri']
-            text-[14px]
-            font-normal
-            leading-[23px]
-            text-[#FFFDF8]
-            sm:text-[16px]
-          "
+  m-0
+  whitespace-normal
+  font-['Hind_Siliguri']
+  text-[14px]
+  font-normal
+  leading-[23px]
+  text-[#FFFDF8]
+  sm:text-[16px]
+  lg:whitespace-nowrap
+"
               >
                 হাতে পেয়ে দেখে তারপর পেমেন্ট করুন
               </p>
@@ -5724,29 +5730,31 @@ function App() {
           <form
             onSubmit={handleSubmit}
             className="
-    relative
-    z-20
-    pointer-events-auto
-    mx-4
-    mb-8
-    rounded-[24px]
-    border
-    border-[rgba(248,201,75,0.5)]
-    bg-[#FBF5E8]
-    p-[20px]
-    shadow-[0px_20px_55px_rgba(0,0,0,0.22)]
-    sm:mx-auto
-    sm:max-w-[514.09px]
-    lg:absolute
-    lg:right-[64px]
-    lg:top-[64px]
-    lg:mx-0
-    lg:mb-0
-    lg:h-[714px]
-    lg:w-[514.09px]
-    lg:max-w-none
-    lg:p-[34px]
-  "
+  relative
+  z-20
+  pointer-events-auto
+  mx-4
+  mb-5
+  rounded-[20px]
+  border
+  border-[rgba(248,201,75,0.5)]
+  bg-[#FBF5E8]
+  p-[14px]
+  shadow-[0px_20px_55px_rgba(0,0,0,0.22)]
+  sm:mx-auto
+  sm:mb-8
+  sm:max-w-[514.09px]
+  sm:p-[20px]
+  lg:absolute
+  lg:right-[64px]
+  lg:top-[64px]
+  lg:mx-0
+  lg:mb-0
+  lg:h-[714px]
+  lg:w-[514.09px]
+  lg:max-w-none
+  lg:p-[34px]
+"
           >
             <div className="flex flex-col gap-[16.17px]">
               {/* =================================================
@@ -5811,13 +5819,15 @@ function App() {
                 {/* Delivery text */}
                 <span
                   className="
-              whitespace-nowrap
-              font-['Hind_Siliguri']
-              text-[12px]
-              font-normal
-              leading-[12px]
-              text-[#DBEAF4]
-            "
+  whitespace-normal
+  text-center
+  font-['Hind_Siliguri']
+  text-[12px]
+  font-normal
+  leading-[15px]
+  text-[#DBEAF4]
+  lg:whitespace-nowrap
+"
                 >
                   সারা দেশে ক্যাশ অন ডেলিভারি — ডেলিভারি চার্জ মাত্র
                 </span>
@@ -6020,7 +6030,7 @@ function App() {
                       className="
                   mt-[4.47px]
                   box-border
-                  h-[47.78px]
+                h-[43px] sm:h-[42px]
                   w-full
                   rounded-[10.4px]
                   border
@@ -6062,7 +6072,7 @@ function App() {
                       className="
                   mt-[4.47px]
                   box-border
-                  h-[47.78px]
+                  h-[42px]
                   w-full
                   rounded-[10.4px]
                   border
@@ -6107,7 +6117,7 @@ function App() {
                     className="
                 mt-[4.47px]
                 box-border
-                h-[47.78px]
+                h-[42px]
                 w-full
                 rounded-[10.4px]
                 border
@@ -6148,7 +6158,7 @@ function App() {
                     className="
                 mt-[4.47px]
                 box-border
-                h-[83.2px]
+             h-[72px] sm:h-[68px]
                 w-full
                 resize-none
                 rounded-[10.4px]
@@ -6176,7 +6186,7 @@ function App() {
                 className="
             box-border
             flex
-            h-[46.94px]
+            h-[44px] sm:h-[42px]
             w-full
             min-h-[46.4px]
             items-center
@@ -6281,16 +6291,17 @@ function App() {
   ===================================================== */}
         <div
           className="
-      mx-auto
-      flex
-      w-full
-      max-w-[1152px]
-      flex-col
-      justify-between
-      gap-[48px]
-      lg:flex-row
-      lg:items-start
-    "
+  mx-auto
+  flex
+  w-full
+  max-w-[1152px]
+  flex-col
+  justify-between
+  gap-[30px]
+  sm:gap-[48px]
+  lg:flex-row
+  lg:items-start
+"
         >
           {/* =================================================
         LEFT BRAND AREA
@@ -6375,24 +6386,24 @@ function App() {
             {/* Description */}
             <p
               className="
-          m-0
-          mt-[8px]
-          w-full
-          max-w-[371.5px]
-          whitespace-nowrap
-          font-['Inter']
-          text-[13.76px]
-          font-normal
-          leading-[23px]
-          tracking-[-0.131688px]
-          text-[#B2BFD0]
-        "
+  m-0
+  mt-[8px]
+  w-full
+  max-w-[371.5px]
+  whitespace-normal
+  font-['Inter']
+  text-[13.76px]
+  font-normal
+  leading-[23px]
+  tracking-[-0.131688px]
+  text-[#B2BFD0]
+"
             >
               English Commando-এর বই ও digital learning support একসাথে।
             </p>
           </div>
 
-   {/* =================================================
+          {/* =================================================
         RIGHT SIDE
     ================================================= */}
           <div
@@ -6409,15 +6420,15 @@ function App() {
             <a
               href="tel:01405458800"
               className="
-          flex
-          h-[44px]
-          min-h-[44px]
-          items-center
-          whitespace-nowrap
-          no-underline
-          transition-colors
-          hover:text-white
-        "
+  flex
+  min-h-[44px]
+  w-full
+  items-center
+  whitespace-normal
+  no-underline
+  transition-colors
+  hover:text-white
+"
             >
               <span
                 className="
@@ -6437,17 +6448,17 @@ function App() {
             <a
               href="#privacy-policy"
               className="
-          ml-0
-          flex
-          h-[44px]
-          min-h-[44px]
-          items-center
-          whitespace-nowrap
-          no-underline
-          transition-colors
-          hover:text-white
-          lg:ml-[106px]
-        "
+  ml-0
+  flex
+  h-[44px]
+  min-h-[44px]
+  items-center
+  whitespace-normal
+  no-underline
+  transition-colors
+  hover:text-white
+  lg:ml-[106px]
+"
             >
               <span
                 className="
@@ -6540,7 +6551,7 @@ function App() {
           </div>
         </div>
       </footer>
-   </main>
+    </main>
   );
 }
 
