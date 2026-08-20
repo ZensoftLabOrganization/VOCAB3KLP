@@ -907,6 +907,13 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .order-delivery-ribbon {
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
   .order-copy {
     text-align: center;
   }

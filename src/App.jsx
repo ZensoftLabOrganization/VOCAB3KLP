@@ -5758,7 +5758,7 @@ function App() {
             DELIVERY RIBBON
         ================================================= */}
               <div
-                className="
+                className="order-delivery-ribbon
             flex
             h-[44.5px]
             w-full
