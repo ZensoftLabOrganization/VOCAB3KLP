@@ -907,6 +907,21 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .faq-sidebar {
+    align-items: center;
+    text-align: center;
+  }
+
+  .faq-sidebar > div:first-child,
+  .faq-sidebar > div:last-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .faq-sidebar h2 {
+    white-space: normal;
+  }
+
   .android-copy {
     align-items: center;
     text-align: center;

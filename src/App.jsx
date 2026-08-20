@@ -1855,7 +1855,7 @@ function App() {
           <div className="mx-auto flex w-full flex-col items-center">
             {/* WHO IT IS FOR */}
             <div
-              className="
+              className="faq-sidebar
           flex
           h-[17px]
           items-center
