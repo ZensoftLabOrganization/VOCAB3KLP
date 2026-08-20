@@ -907,6 +907,14 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .decision-section article > div:first-child {
+    display: block;
+  }
+
+  .decision-section article > div:first-child > div:nth-child(2) {
+    margin-top: 12px;
+  }
+
   .decision-section .text-left {
     text-align: center !important;
   }
