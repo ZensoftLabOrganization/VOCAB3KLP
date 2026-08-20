@@ -1314,7 +1314,7 @@ function App() {
 
       <section
         id="decision"
-        className="
+        className="decision-section
     relative
     overflow-hidden
     bg-[#050812]

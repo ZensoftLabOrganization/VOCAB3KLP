@@ -907,6 +907,31 @@ textarea:-webkit-autofill:focus {
 }
 
 @media (max-width: 767px) {
+  .decision-section .text-left {
+    text-align: center !important;
+  }
+
+  .decision-section .items-center {
+    justify-content: center;
+  }
+
+  .decision-section h2 span {
+    white-space: normal;
+  }
+
+  .decision-section article {
+    text-align: center;
+  }
+
+  .decision-section article > div:first-child {
+    justify-content: center;
+  }
+
+  .decision-section article > .absolute {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .hero-stat:nth-child(odd) {
     border-left: 0 !important;
     padding-left: 0 !important;
