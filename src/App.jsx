@@ -738,11 +738,11 @@ function App() {
               </div>
             </div>
 
-            <div className="relative justify-self-end w-[min(100%,640px)] translate-x-3 lg:translate-x-6">
+            <div className="relative w-[min(100%,640px)] justify-self-center translate-x-0 lg:justify-self-end lg:translate-x-6">
               <img
                 src={heroArtwork}
                 alt="Oxford 3000 vocabulary pack"
-                className="block w-full select-none object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                className="mx-auto block w-full select-none object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
               />
             </div>
           </div>
