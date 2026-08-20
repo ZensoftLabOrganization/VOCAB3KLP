@@ -1214,7 +1214,7 @@ function App() {
       "
           >
             {/* ================= LEFT CONTENT ================= */}
-            <div className="text-left">
+            <div className="text-center lg:text-left">
               {/* THE BOOK, UNPACKED */}
               <div
                 className="
@@ -1236,7 +1236,10 @@ function App() {
                 className="
             mt-[14px]
             w-full
-            whitespace-nowrap
+            whitespace-normal
+            lg:whitespace-nowrap
+            text-center
+            lg:text-left
             font-['Hind_Siliguri']
             text-[40px]
             font-bold
@@ -1251,9 +1254,10 @@ function App() {
 
             {/* ================= RIGHT DESCRIPTION ================= */}
             <div
-              className="
+          className="
           flex
           items-start
+          justify-center
           lg:justify-end
         "
             >
@@ -1268,7 +1272,8 @@ function App() {
             leading-[30.27px]
             tracking-[-0.44px]
             text-[#4D5A6B]
-            text-left
+            text-center
+            lg:text-left
           "
               >
                 একটি Word Page-এ শুধু অর্থ নয়—উচ্চারণ, ব্যবহার ও Revision-এর
