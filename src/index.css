@@ -915,6 +915,20 @@ textarea:-webkit-autofill:focus {
     margin-top: 12px;
   }
 
+  .decision-section article {
+    text-align: center;
+  }
+
+  .decision-section article > div:first-child > div:first-child {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .decision-section article > .absolute {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .decision-section .text-left {
     text-align: center !important;
   }
