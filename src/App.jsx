@@ -657,7 +657,7 @@ function App() {
               </div>
 
               <h1
-                className="mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
+                className="hero-title-primary mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
                 aria-label="Oxford 3000 Vocab"
               >
                 {["Oxford", "3000", "Vocab"].map((word, index) => (
@@ -671,7 +671,7 @@ function App() {
                 ))}
               </h1>
               <h2
-                className="mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
+                className="hero-title-secondary mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
                 aria-label="Complete Learning System"
               >
                 {["Complete", "Learning", "System"].map((word, index) => (
