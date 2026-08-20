@@ -921,14 +921,14 @@ textarea:-webkit-autofill:focus {
   }
 
   .order-copy .order-benefit-grid > div {
-    text-align: center;
+    text-align: left;
   }
 
   .order-copy .order-benefit-grid p {
     width: auto;
     max-width: calc(100% - 20px);
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .order-copy .order-benefit-grid br {
