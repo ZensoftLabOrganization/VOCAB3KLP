@@ -924,6 +924,15 @@ textarea:-webkit-autofill:focus {
     margin-left: auto;
   }
 
+  .decision-section article p {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .decision-section article p span {
+    white-space: normal !important;
+  }
+
   .decision-section article > .absolute {
     left: 50%;
     transform: translateX(-50%);
