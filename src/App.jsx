@@ -595,7 +595,7 @@ function App() {
 
               <a
                 href="#order"
-                className="hidden h-[46.938px] min-h-[46.4px] w-full max-w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
+                className="hidden h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
               >
                 এখনই অর্ডার করুন
                 <svg
@@ -657,7 +657,7 @@ function App() {
               </div>
 
               <h1
-                className="mt-8 whitespace-normal text-[clamp(2rem,9vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98] lg:whitespace-nowrap lg:text-[clamp(2.15rem,5vw,4.12rem)]"
+                className="hero-title-primary mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
                 aria-label="Oxford 3000 Vocab"
               >
                 {["Oxford", "3000", "Vocab"].map((word, index) => (
@@ -671,7 +671,7 @@ function App() {
                 ))}
               </h1>
               <h2
-                className="mt-3 whitespace-normal text-[clamp(1.8rem,8vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02] lg:whitespace-nowrap lg:text-[clamp(2rem,4.1vw,3.18rem)]"
+                className="hero-title-secondary mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
                 aria-label="Complete Learning System"
               >
                 {["Complete", "Learning", "System"].map((word, index) => (
@@ -738,11 +738,11 @@ function App() {
               </div>
             </div>
 
-            <div className="relative justify-self-center w-[min(100%,420px)] translate-x-0 lg:justify-self-end lg:w-[min(100%,640px)] lg:translate-x-6">
+            <div className="relative w-[min(100%,640px)] justify-self-center translate-x-0 lg:justify-self-end lg:translate-x-6">
               <img
                 src={heroArtwork}
                 alt="Oxford 3000 vocabulary pack"
-                className="block w-full select-none object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                className="mx-auto block w-full select-none object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
               />
             </div>
           </div>
@@ -758,7 +758,7 @@ function App() {
             ].map(([title, subtitle]) => (
               <div
                 key={title + subtitle}
-                className="border-l border-white/10 pl-4 first:border-l-0 first:pl-0 lg:px-4"
+                className="hero-stat border-l border-white/10 pl-4 first:border-l-0 first:pl-0 lg:px-4"
               >
                 <div className="text-2xl font-black text-[#f7c84f]">
                   {title}
@@ -1214,7 +1214,7 @@ function App() {
       "
           >
             {/* ================= LEFT CONTENT ================= */}
-            <div className="text-left">
+            <div className="text-center lg:text-left">
               {/* THE BOOK, UNPACKED */}
               <div
                 className="
@@ -1236,7 +1236,10 @@ function App() {
                 className="
             mt-[14px]
             w-full
-            whitespace-nowrap
+            whitespace-normal
+            lg:whitespace-nowrap
+            text-center
+            lg:text-left
             font-['Hind_Siliguri']
             text-[40px]
             font-bold
@@ -1254,6 +1257,7 @@ function App() {
               className="
           flex
           items-start
+          justify-center
           lg:justify-end
         "
             >
@@ -1268,7 +1272,8 @@ function App() {
             leading-[30.27px]
             tracking-[-0.44px]
             text-[#4D5A6B]
-            text-left
+            text-center
+            lg:text-left
           "
               >
                 একটি Word Page-এ শুধু অর্থ নয়—উচ্চারণ, ব্যবহার ও Revision-এর
@@ -1309,7 +1314,7 @@ function App() {
 
       <section
         id="decision"
-        className="
+        className="decision-section
     relative
     overflow-hidden
     bg-[#050812]
@@ -1362,18 +1367,16 @@ function App() {
     w-full
     max-w-[560px]
     font-['Hind_Siliguri']
-    text-[30px]
+    text-[46.08px]
+    max-lg:text-[clamp(2rem,7vw,46.08px)]
     font-bold
-    leading-[36px]
+    leading-[52.53px]
+    max-lg:leading-[1.18]
     tracking-[-0.79px]
     text-white
-    sm:text-[36px]
-    sm:leading-[43px]
-    lg:text-[46.08px]
-    lg:leading-[52.53px]
   "
               >
-                <span className="block whitespace-normal lg:whitespace-nowrap font-['Hind_Siliguri'] font-bold">
+                <span className="block font-['Hind_Siliguri'] font-bold">
                   শুধু বই নয়—পুরো একটি
                 </span>
 
@@ -1415,7 +1418,8 @@ function App() {
                 alt="Book and digital learning support"
                 className="
             block
-            w-[min(600px,100%)]
+              w-full
+              max-w-[600px]
             select-none
             object-contain
             drop-shadow-[0_20px_45px_rgba(0,0,0,0.45)]
@@ -1531,7 +1535,7 @@ function App() {
                   </h3>
 
                   <p className="mt-[7px] font-['Hind_Siliguri'] text-[13px] leading-[21px] text-[#8E99AA]">
-                    <span className="block whitespace-nowrap">
+                    <span className="block">
                       শব্দ অনুশীলন ও revision-এর জন্য বইয়ের সঙ্গে
                     </span>
 
@@ -1585,7 +1589,7 @@ function App() {
                   </h3>
 
                   <p className="mt-[7px] font-['Hind_Siliguri'] text-[13px] leading-[21px] text-[#8E99AA]">
-                    <span className="block whitespace-nowrap">
+                    <span className="block">
                       শুনুন, নিজে উচ্চারণ করুন এবং মনে রাখার চেষ্টা
                     </span>
                     <span className="block">করুন।</span>
@@ -1638,7 +1642,7 @@ function App() {
                   </h3>
 
                   <p className="mt-[7px] font-['Hind_Siliguri'] text-[13px] leading-[21px] text-[#8E99AA]">
-                    <span className="block whitespace-nowrap">
+                    <span className="block">
                       কঠিন অংশ ও ব্যবহার বুঝতে ধাপে ধাপে video
                     </span>
                     <span className="block">support।</span>
@@ -1742,7 +1746,7 @@ function App() {
                   </h3>
 
                   <p className="mt-[7px] font-['Hind_Siliguri'] text-[13px] leading-[21px] text-[#8E99AA]">
-                    <span className="block whitespace-nowrap">
+                    <span className="block">
                       শেখা, revision ও পরবর্তী ধাপ গুছিয়ে এগোনোর
                     </span>
                     <span className="block">ব্যবস্থা।</span>
@@ -1758,7 +1762,7 @@ function App() {
         BOTTOM CTA
     ========================================================= */}
           <div
-            className="
+            className="decision-cta
         mt-[14px]
         flex
         min-h-[78px]
@@ -1806,8 +1810,8 @@ function App() {
 
             {/* ORDER BUTTON */}
             <a
-              href="#"
-              className="
+              href="#order"
+              className="button button--primary
           flex
           h-[48px]
           min-w-[198px]
@@ -3960,7 +3964,7 @@ function App() {
         LEFT CONTENT
     ======================================================= */}
           <div
-            className="
+            className="android-copy
         flex
         w-full
         max-w-[447.55px]
@@ -4374,7 +4378,7 @@ function App() {
       ===================================================== */}
 
             <div
-              className="
+              className="faq-sidebar
           flex
           w-full
           flex-col
@@ -5259,7 +5263,7 @@ function App() {
 
       <section className="relative overflow-hidden bg-[#fff0c9] px-6 py-14 sm:px-8 lg:px-0 lg:py-[56px]">
         <div className="mx-auto grid w-full max-w-[1152px] grid-cols-1 items-center gap-6 rounded-[24px] border border-[rgba(248,201,75,0.34)] bg-[#071229] p-7 shadow-[0_28px_70px_0_rgba(4,9,20,0.18)] sm:grid-cols-[68px_minmax(0,1fr)] lg:h-[160.375px] lg:grid-cols-[68px_760.41px_200px] lg:gap-8 lg:p-[28.8px]">
-          <div className="grid h-[68px] w-[68px] place-items-center rounded-full border border-[#f8c94b]">
+          <div className="grid h-[68px] w-[68px] place-self-center place-items-center rounded-full border border-[#f8c94b]">
             <svg
               viewBox="0 0 32 32"
               className="h-7 w-7 text-[#f8c94b]"
@@ -5396,7 +5400,7 @@ function App() {
         LEFT SIDE CONTENT
     ===================================================== */}
           <div
-            className="
+            className="order-copy
         relative
         z-10
         px-6
@@ -5430,19 +5434,18 @@ function App() {
       ================================================= */}
             <h2
               className="
-  mt-[19px]
-  whitespace-normal
-  font-['Hind_Siliguri']
-  text-[30px]
-  font-bold
-  leading-[1.4]
-  tracking-[-0.02em]
-  text-white
-  sm:text-[36px]
-  lg:whitespace-nowrap
-  lg:text-[36px]
-  lg:leading-[62px]
-"
+          mt-[19px]
+          whitespace-nowrap
+          font-['Hind_Siliguri']
+          text-[30px]
+          font-bold
+          leading-[1.55]
+          tracking-[-0.02em]
+          text-white
+          sm:text-[36px]
+          lg:text-[36px]
+          lg:leading-[62px]
+        "
             >
               আগে বই বুঝে নিন,
               <br />
@@ -5464,7 +5467,7 @@ function App() {
           lg:text-[20px]
         "
             >
-              <span className="block whitespace-normal lg:whitespace-nowrap">
+              <span className="block whitespace-nowrap">
                 সারা দেশে ক্যাশ অন ডেলিভারি — ডেলিভারি চার্জ মাত্র
               </span>
 
@@ -5475,7 +5478,7 @@ function App() {
           BENEFIT CARDS
       ================================================= */}
             <div
-              className="
+              className="order-benefit-grid
           mt-[28px]
           grid
           w-full
@@ -5708,16 +5711,15 @@ function App() {
 
               <p
                 className="
-  m-0
-  whitespace-normal
-  font-['Hind_Siliguri']
-  text-[14px]
-  font-normal
-  leading-[23px]
-  text-[#FFFDF8]
-  sm:text-[16px]
-  lg:whitespace-nowrap
-"
+            m-0
+            whitespace-nowrap
+            font-['Hind_Siliguri']
+            text-[14px]
+            font-normal
+            leading-[23px]
+            text-[#FFFDF8]
+            sm:text-[16px]
+          "
               >
                 হাতে পেয়ে দেখে তারপর পেমেন্ট করুন
               </p>
@@ -5730,38 +5732,37 @@ function App() {
           <form
             onSubmit={handleSubmit}
             className="
-  relative
-  z-20
-  pointer-events-auto
-  mx-4
-  mb-5
-  rounded-[20px]
-  border
-  border-[rgba(248,201,75,0.5)]
-  bg-[#FBF5E8]
-  p-[14px]
-  shadow-[0px_20px_55px_rgba(0,0,0,0.22)]
-  sm:mx-auto
-  sm:mb-8
-  sm:max-w-[514.09px]
-  sm:p-[20px]
-  lg:absolute
-  lg:right-[64px]
-  lg:top-[64px]
-  lg:mx-0
-  lg:mb-0
-  lg:h-[714px]
-  lg:w-[514.09px]
-  lg:max-w-none
-  lg:p-[34px]
-"
+    relative
+    z-20
+    pointer-events-auto
+    mx-4
+    mb-8
+    rounded-[24px]
+    border
+    border-[rgba(248,201,75,0.5)]
+    bg-[#FBF5E8]
+    p-[20px]
+    shadow-[0px_20px_55px_rgba(0,0,0,0.22)]
+    sm:mx-auto
+    sm:max-w-[514.09px]
+    lg:absolute
+    lg:right-[64px]
+    lg:top-[64px]
+    lg:mx-0
+    lg:mb-0
+    lg:h-[714px]
+    lg:w-[514.09px]
+    lg:max-w-none
+    lg:p-[34px]
+        max-[520px]:p-[16px]
+  "
           >
-            <div className="flex flex-col gap-[16.17px]">
+            <div className="flex flex-col gap-[16.17px] max-[520px]:gap-[10px]">
               {/* =================================================
             DELIVERY RIBBON
         ================================================= */}
               <div
-                className="
+                className="order-delivery-ribbon
             flex
             h-[44.5px]
             w-full
@@ -5776,6 +5777,11 @@ function App() {
             sm:flex-row
             sm:gap-[8px]
             sm:py-[11px]
+            max-[520px]:h-[38px]
+            max-[520px]:px-[5px]
+            max-[520px]:py-0
+            max-[520px]:flex-row
+            max-[520px]:gap-[5px]
           "
               >
                 {/* Truck */}
@@ -5819,15 +5825,15 @@ function App() {
                 {/* Delivery text */}
                 <span
                   className="
-  whitespace-normal
-  text-center
-  font-['Hind_Siliguri']
-  text-[12px]
-  font-normal
-  leading-[15px]
-  text-[#DBEAF4]
-  lg:whitespace-nowrap
-"
+              whitespace-nowrap
+              font-['Hind_Siliguri']
+              text-[12px]
+              font-normal
+              leading-[12px]
+              text-[#DBEAF4]
+              max-[520px]:whitespace-normal
+              max-[520px]:text-center
+            "
                 >
                   সারা দেশে ক্যাশ অন ডেলিভারি — ডেলিভারি চার্জ মাত্র
                 </span>
@@ -5860,6 +5866,9 @@ function App() {
             bg-[rgba(255,255,255,0.6)]
             px-[16.2px]
             py-[16.2px]
+            max-[520px]:min-h-[126px]
+            max-[520px]:px-[12px]
+            max-[520px]:py-[12px]
           "
               >
                 {/* Top row */}
@@ -5926,10 +5935,11 @@ function App() {
 
                 {/* Price details */}
                 <div
-                  className="
+                  className="order-price-details
               mt-[9px]
               flex
               items-center
+              justify-start
               gap-[8px]
               font-['Hind_Siliguri']
               text-[12.16px]
@@ -5952,7 +5962,7 @@ function App() {
 
                 {/* COD chip */}
                 <div
-                  className="
+                  className="order-cod-chip
               mt-[14px]
               inline-flex
               h-[25.22px]
@@ -5962,6 +5972,8 @@ function App() {
               bg-[rgba(248,201,75,0.15)]
               px-[8.96px]
               py-[5.12px]
+              flex
+              w-fit
             "
                 >
                   <span
@@ -6030,7 +6042,7 @@ function App() {
                       className="
                   mt-[4.47px]
                   box-border
-                h-[43px] sm:h-[42px]
+                  h-[47.78px]
                   w-full
                   rounded-[10.4px]
                   border
@@ -6043,6 +6055,8 @@ function App() {
                   focus:border-[#F8C94B]
                   focus:ring-2
                   focus:ring-[#F8C94B]/20
+                  max-[520px]:mt-[2px]
+                  max-[520px]:h-[42px]
                 "
                     />
                   </div>
@@ -6072,7 +6086,7 @@ function App() {
                       className="
                   mt-[4.47px]
                   box-border
-                  h-[42px]
+                  h-[47.78px]
                   w-full
                   rounded-[10.4px]
                   border
@@ -6088,13 +6102,15 @@ function App() {
                   focus:border-[#F8C94B]
                   focus:ring-2
                   focus:ring-[#F8C94B]/20
+                  max-[520px]:mt-[2px]
+                  max-[520px]:h-[42px]
                 "
                     />
                   </div>
                 </div>
 
                 {/* DISTRICT */}
-                <div className="mt-[13px]">
+                <div className="mt-[13px] max-[520px]:mt-[10px]">
                   <label
                     htmlFor="district"
                     className="
@@ -6117,7 +6133,7 @@ function App() {
                     className="
                 mt-[4.47px]
                 box-border
-                h-[42px]
+                h-[47.78px]
                 w-full
                 rounded-[10.4px]
                 border
@@ -6130,12 +6146,14 @@ function App() {
                 focus:border-[#F8C94B]
                 focus:ring-2
                 focus:ring-[#F8C94B]/20
+                max-[520px]:mt-[2px]
+                max-[520px]:h-[42px]
               "
                   />
                 </div>
 
                 {/* FULL ADDRESS */}
-                <div className="mt-[13px]">
+                <div className="mt-[13px] max-[520px]:mt-[10px]">
                   <label
                     htmlFor="address"
                     className="
@@ -6158,7 +6176,7 @@ function App() {
                     className="
                 mt-[4.47px]
                 box-border
-             h-[72px] sm:h-[68px]
+                h-[83.2px]
                 w-full
                 resize-none
                 rounded-[10.4px]
@@ -6173,6 +6191,8 @@ function App() {
                 focus:border-[#F8C94B]
                 focus:ring-2
                 focus:ring-[#F8C94B]/20
+                max-[520px]:mt-[2px]
+                max-[520px]:h-[68px]
               "
                   />
                 </div>
@@ -6186,7 +6206,7 @@ function App() {
                 className="
             box-border
             flex
-            h-[44px] sm:h-[42px]
+            h-[46.94px]
             w-full
             min-h-[46.4px]
             items-center
@@ -6291,17 +6311,16 @@ function App() {
   ===================================================== */}
         <div
           className="
-  mx-auto
-  flex
-  w-full
-  max-w-[1152px]
-  flex-col
-  justify-between
-  gap-[30px]
-  sm:gap-[48px]
-  lg:flex-row
-  lg:items-start
-"
+      mx-auto
+      flex
+      w-full
+      max-w-[1152px]
+      flex-col
+      justify-between
+      gap-[48px]
+      lg:flex-row
+      lg:items-start
+    "
         >
           {/* =================================================
         LEFT BRAND AREA
@@ -6386,20 +6405,22 @@ function App() {
             {/* Description */}
             <p
               className="
-  m-0
-  mt-[8px]
-  w-full
-  max-w-[371.5px]
-  whitespace-normal
-  font-['Inter']
-  text-[13.76px]
-  font-normal
-  leading-[23px]
-  tracking-[-0.131688px]
-  text-[#B2BFD0]
-"
+          m-0
+          mt-[8px]
+          w-full
+          max-w-[371.5px]
+          footer-description
+          whitespace-nowrap
+          font-['Inter']
+          text-[13.76px]
+          font-normal
+          leading-[23px]
+          tracking-[-0.131688px]
+          text-[#B2BFD0]
+        "
             >
-              English Commando-এর বই ও digital learning support একসাথে।
+              English Commando-এর বই ও digital learning support{" "}
+              <span className="footer-description-last">একসাথে।</span>
             </p>
           </div>
 
@@ -6420,15 +6441,15 @@ function App() {
             <a
               href="tel:01405458800"
               className="
-  flex
-  min-h-[44px]
-  w-full
-  items-center
-  whitespace-normal
-  no-underline
-  transition-colors
-  hover:text-white
-"
+          flex
+          h-[44px]
+          min-h-[44px]
+          items-center
+          whitespace-nowrap
+          no-underline
+          transition-colors
+          hover:text-white
+        "
             >
               <span
                 className="
@@ -6448,17 +6469,17 @@ function App() {
             <a
               href="#privacy-policy"
               className="
-  ml-0
-  flex
-  h-[44px]
-  min-h-[44px]
-  items-center
-  whitespace-normal
-  no-underline
-  transition-colors
-  hover:text-white
-  lg:ml-[106px]
-"
+          ml-0
+          flex
+          h-[44px]
+          min-h-[44px]
+          items-center
+          whitespace-nowrap
+          no-underline
+          transition-colors
+          hover:text-white
+          lg:ml-[106px]
+        "
             >
               <span
                 className="
