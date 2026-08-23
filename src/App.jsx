@@ -12,8 +12,10 @@ import bookDetail from "./images/image4.png";
 import androidApp from "./images/image5.png";
 import image6 from "./images/image6.png";
 import infoIcon from "./assets/Info icon.svg";
+import sparkleIcon from "./assets/Icon.svg";
 import Footer from "./footer";
 import Header from "./header";
+import PrivacyPolicy from "./privacy-policy";
 // bookDetail (image4.png) removed per request
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -214,6 +216,9 @@ const PdfFlipPage = forwardRef(function PdfFlipPage({ children }, ref) {
 });
 
 function App() {
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(
+    () => typeof window !== "undefined" && (window.location.pathname === "/privacy-policy" || window.location.hash === "#privacy-policy"),
+  );
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const [videoPlaying, setVideoPlaying] = useState(false);
@@ -242,6 +247,16 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderMessage, setOrderMessage] = useState("");
   const [orderError, setOrderError] = useState("");
+
+  useEffect(() => {
+    const handleLocationChange = () => setShowPrivacyPolicy(window.location.pathname === "/privacy-policy" || window.location.hash === "#privacy-policy");
+    window.addEventListener("hashchange", handleLocationChange);
+    window.addEventListener("popstate", handleLocationChange);
+    return () => {
+      window.removeEventListener("hashchange", handleLocationChange);
+      window.removeEventListener("popstate", handleLocationChange);
+    };
+  }, []);
 
   // =========================
   // AUTO HIDE ORDER ALERT
@@ -497,6 +512,10 @@ function App() {
     },
   ];
 
+  if (showPrivacyPolicy) {
+    return <main className="min-h-screen bg-[#050812] text-white"><Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} activeSection={activeSection} scrollProgress={scrollProgress} /><PrivacyPolicy /><Footer /></main>;
+  }
+
   return (
     <main className="min-h-screen bg-[#050812] text-white">
       {/* =================================================
@@ -547,7 +566,7 @@ function App() {
           <div className="grid items-center gap-6 px-3 pb-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:pt-24">
             <div className="max-w-[560px] lg:pr-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#f7c84f]/30 bg-[#0c1426] px-4 py-2 text-[0.72rem] font-medium text-[#f7c84f] shadow-soft">
-                <span className="text-sm">◂</span>
+                <span className="text-sm" aria-hidden="true"><img src={sparkleIcon} alt="" className="sparkle-icon h-4 w-4" /></span>
                 বাংলাদেশে আমরাই প্রথম
               </div>
 
@@ -2320,7 +2339,14 @@ function App() {
             bg-[#07152D]
             shadow-[0_20px_45px_rgba(0,0,0,0.35)]
           "
-              >
+          >
+                <iframe
+                  className="absolute inset-0 z-50 h-full w-full border-0"
+                  src="https://www.youtube.com/embed/Pa0QmStjIUE?rel=0"
+                  title="Student review video 1"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
                 {/* Background */}
                 <div
                   className="
@@ -2535,7 +2561,14 @@ function App() {
             bg-[#07152D]
             shadow-[0_20px_45px_rgba(0,0,0,0.35)]
           "
-              >
+          >
+                <iframe
+                  className="absolute inset-0 z-50 h-full w-full border-0"
+                  src="https://www.youtube.com/embed/3OSRv0XbYQE?rel=0"
+                  title="Student review video 2"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
                 {/* Background */}
                 <div
                   className="
@@ -2750,7 +2783,14 @@ function App() {
             bg-[#07152D]
             shadow-[0_20px_45px_rgba(0,0,0,0.35)]
           "
-              >
+          >
+                <iframe
+                  className="absolute inset-0 z-50 h-full w-full border-0"
+                  src="https://www.youtube.com/embed/_YxU5qvYSYg?rel=0"
+                  title="Student review video 3"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
                 {/* Background */}
                 <div
                   className="
@@ -6165,7 +6205,7 @@ function App() {
               >
                 তথ্য শুধু ডেলিভারির জন্য ব্যবহার হবে{" "}
                 <a
-                  href="#privacy-policy"
+                  href="/privacy-policy"
                   className="
               font-medium
               text-[#73500C]

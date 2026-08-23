@@ -177,7 +177,7 @@ function Footer() {
 
           {/* Privacy Policy */}
           <a
-            href="#privacy-policy"
+            href="/privacy-policy"
             className="
               ml-0
               flex
