@@ -1168,7 +1168,7 @@ function App() {
 
             {/* ================= RIGHT DESCRIPTION ================= */}
             <div
-              className="
+          className="
           flex
           items-start
           justify-center
