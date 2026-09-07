@@ -1324,7 +1324,8 @@ textarea:-webkit-autofill:focus {
   width: 212.16px;
   height: 335.4px;
   max-width: none;
-  overflow: visible;
+  overflow: hidden;
+  isolation: isolate;
   border-radius: 16px;
 }
 
@@ -2290,13 +2291,17 @@ textarea:-webkit-autofill:focus {
   }
 
   .pdf-mobile-page {
+    width: 370px !important;
+    height: 523px !important;
+    opacity: 1;
     border: 1px solid rgba(16, 36, 59, 0.16);
-    border-radius: 12px;
+    border-radius: 20px;
     background: #eee7db;
     box-shadow:
       0 14px 28px rgba(16, 20, 24, 0.14),
       inset 0 0 16px rgba(16, 36, 59, 0.08);
     animation: mobilePdfPageEnter 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    padding: 0;
   }
 
   @keyframes mobilePdfPageEnter {
@@ -2311,17 +2316,29 @@ textarea:-webkit-autofill:focus {
   }
 
   .pdf-page-viewport-mobile {
-    aspect-ratio: 1 / 1.414;
+    display: flex;
+    width: 370px !important;
+    height: 523px !important;
+    aspect-ratio: auto;
+    justify-content: center;
+    align-items: center;
   }
 
   .pdf-mobile-single-stage {
-    position: absolute;
-    inset: 0;
+    position: relative;
     display: flex;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     align-items: center;
     justify-content: center;
     background: #fffdf7;
+    border-radius: 20px;
+    perspective: none;
+    padding-top: 42px;
+    padding-right: 34px;
+    padding-bottom: 32px;
+    padding-left: 26px;
   }
 
   .pdf-mobile-single-sheet {
@@ -2330,42 +2347,55 @@ textarea:-webkit-autofill:focus {
     height: 100%;
     overflow: hidden;
     background: #fffdf7;
+    border-radius: 20px;
     box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
+    transform-style: flat;
+    backface-visibility: visible;
+    will-change: opacity, transform;
   }
 
   .pdf-mobile-turn-next .pdf-mobile-single-sheet {
-    animation: mobilePdfTurnNext 520ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
-    transform-origin: left center;
+    animation: mobilePdfTurnNext 280ms ease-out both;
+    transform-origin: center;
   }
 
   .pdf-mobile-turn-previous .pdf-mobile-single-sheet {
-    animation: mobilePdfTurnPrevious 520ms cubic-bezier(0.22, 0.78, 0.22, 1)
-      both;
-    transform-origin: right center;
+    animation: mobilePdfTurnPrevious 280ms ease-out both;
+    transform-origin: center;
   }
 
   @keyframes mobilePdfTurnNext {
-    from {
-      opacity: 0.45;
-      transform: translateX(16px) rotateY(-5deg) scale(0.98);
-      box-shadow: -14px 0 22px rgba(16, 36, 59, 0.18);
-    }
-    to {
+    0% {
       opacity: 1;
-      transform: translateX(0) rotateY(0) scale(1);
+      transform: translateX(0) scale(1);
+      box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(3px) scale(1.002);
+      box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
       box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
     }
   }
 
   @keyframes mobilePdfTurnPrevious {
-    from {
-      opacity: 0.45;
-      transform: translateX(-16px) rotateY(5deg) scale(0.98);
-      box-shadow: 14px 0 22px rgba(16, 36, 59, 0.18);
-    }
-    to {
+    0% {
       opacity: 1;
-      transform: translateX(0) rotateY(0) scale(1);
+      transform: translateX(0) scale(1);
+      box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(-3px) scale(1.002);
+      box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
       box-shadow: 0 0 18px rgba(16, 36, 59, 0.16);
     }
   }
@@ -2375,7 +2405,7 @@ textarea:-webkit-autofill:focus {
   }
 
   .pdf-page {
-    transform: scale(0.93);
+    transform: scale(1) !important;
   }
 }
 

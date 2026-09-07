@@ -54,22 +54,27 @@ function Header({
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          aria-label={mobileMenuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
-          aria-expanded={mobileMenuOpen}
-          onClick={() => setMobileMenuOpen((open) => !open)}
-          className="ml-auto grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-white transition hover:bg-white/10 xl:hidden"
+        {/* Mobile Order Button */}
+        <a
+          href="#order"
+          className="ml-auto mr-2 flex h-[44px] w-[118px] items-center justify-center gap-[8px] rounded-[12px] bg-[#E8B84E] px-[12px] py-[10px] text-[12px] font-bold text-[#10172a] shadow-[0_8px_20px_rgba(232,184,78,0.22)] transition hover:brightness-105 xl:hidden"
         >
-          <span className="sr-only">মেনু</span>
-
-          <span className="flex w-5 flex-col gap-1.5">
-            <span className="h-0.5 w-full bg-current" />
-            <span className="h-0.5 w-full bg-current" />
-            <span className="h-0.5 w-full bg-current" />
-          </span>
-        </button>
+          অর্ডার করুন
+          <svg
+            viewBox="0 0 20 20"
+            className="h-4 w-4 shrink-0"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.8"
+            />
+          </svg>
+        </a>
 
         {/* Desktop Order Button */}
         <a
