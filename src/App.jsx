@@ -2198,7 +2198,7 @@ function App() {
     STUDENT PROOF
 ========================================================= */}
       <section
-        className="
+        className="student-proof-section
     relative
     overflow-hidden
     bg-[#050A14]
@@ -2236,6 +2236,7 @@ function App() {
             >
               <span
                 className="
+              student-proof-label-line
         h-[2px]
         w-[16px]
         shrink-0
@@ -2274,6 +2275,12 @@ function App() {
             >
               শিক্ষার্থীদের অভিজ্ঞতা
             </h2>
+            <img
+              src={explainerUnderline}
+              alt=""
+              aria-hidden="true"
+              className="student-proof-underline"
+            />
           </div>
 
           {/* =========================================================
@@ -2285,6 +2292,7 @@ function App() {
               {/* STUDENT STORIES */}
               <div
                 className="
+      student-stories-label
       flex
       items-center
       justify-center
@@ -2344,6 +2352,7 @@ function App() {
             <div
               className="
     student-proof-grid
+    student-proof-track
     mx-auto
     mt-[24px]
     grid
@@ -2359,6 +2368,7 @@ function App() {
         ======================================================= */}
               <div
                 className="
+              student-proof-card
             relative
             h-[570px]
             overflow-hidden
@@ -2373,6 +2383,8 @@ function App() {
                   className="absolute inset-0 z-50 h-full w-full border-0"
                   src="https://www.youtube.com/embed/Pa0QmStjIUE?rel=0"
                   title="Student review video 1"
+                  loading="eager"
+                  fetchPriority="high"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
@@ -2560,7 +2572,7 @@ function App() {
                 text-white
               "
                   >
-                    শিক্ষার্থীর নাম
+                    শিক্ষার্থী ০১
                   </div>
 
                   <div
@@ -2571,7 +2583,7 @@ function App() {
                 text-white/55
               "
                   >
-                    পেশা
+                    ব্যবহারকারী
                   </div>
                 </div>
               </div>
@@ -2581,6 +2593,7 @@ function App() {
         ======================================================= */}
               <div
                 className="
+              student-proof-card
             relative
             h-[570px]
             overflow-hidden
@@ -2595,6 +2608,7 @@ function App() {
                   className="absolute inset-0 z-50 h-full w-full border-0"
                   src="https://www.youtube.com/embed/3OSRv0XbYQE?rel=0"
                   title="Student review video 2"
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
@@ -2782,7 +2796,7 @@ function App() {
                 text-white
               "
                   >
-                    শিক্ষার্থীর নাম
+                    শিক্ষার্থী ০২
                   </div>
 
                   <div
@@ -2793,7 +2807,7 @@ function App() {
                 text-white/55
               "
                   >
-                    পেশা
+                    ব্যবহারকারী
                   </div>
                 </div>
               </div>
@@ -2803,6 +2817,7 @@ function App() {
         ======================================================= */}
               <div
                 className="
+              student-proof-card
             relative
             h-[570px]
             overflow-hidden
@@ -2817,6 +2832,7 @@ function App() {
                   className="absolute inset-0 z-50 h-full w-full border-0"
                   src="https://www.youtube.com/embed/_YxU5qvYSYg?rel=0"
                   title="Student review video 3"
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
@@ -3004,7 +3020,7 @@ function App() {
                 text-white
               "
                   >
-                    শিক্ষার্থীর নাম
+                    শিক্ষার্থী ০৩
                   </div>
 
                   <div
@@ -3015,17 +3031,19 @@ function App() {
                 text-white/55
               "
                   >
-                    পেশা
+                    ব্যবহারকারী
                   </div>
                 </div>
               </div>
             </div>
+
+            <p className="student-proof-swipe-hint">ভিডিও দেখতে সোয়াইপ করুন</p>
           </div>
 
           {/* =========================================================
     WRITTEN FEEDBACK
 ========================================================= */}
-          <div className="mt-[52px]">
+          <div className="mt-[52px] hidden">
             {/* ================= HEADING ================= */}
             <div className="text-center">
               <div

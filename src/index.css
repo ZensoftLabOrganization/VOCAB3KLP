@@ -627,7 +627,7 @@ textarea:-webkit-autofill:focus {
   grid-template-columns: 1fr 1fr;
   align-items: start;
   gap: 80px;
-  margin-bottom: 42px;
+  margin-bottom: 48px;
 }
 
 .word-atlas-eyebrow {
@@ -683,15 +683,19 @@ textarea:-webkit-autofill:focus {
   border: 1px solid #dfd3bb;
   border-radius: 16px;
   background: #fbf5e8;
-  box-shadow: 0 14px 38px rgba(4, 9, 20, 0.09);
+  box-shadow:
+    -10px 10px 0 #e6dcc7,
+    -18px 18px 0 #d8cbb2,
+    0 14px 38px rgba(4, 9, 20, 0.09);
 }
 
 .word-atlas-topbar {
+  box-sizing: border-box;
   display: flex;
-  min-height: 112px;
+  height: 106px;
   align-items: center;
   gap: 18px;
-  padding: 24px 76px 24px 102px;
+  padding: 24px 48px 20px 102px;
   border-bottom: 1px solid #dfd3bb;
 }
 
@@ -735,12 +739,13 @@ textarea:-webkit-autofill:focus {
   display: grid;
   grid-template-columns: 345px 1fr;
   gap: 16px;
-  padding: 40px 48px 44px 102px;
+  padding: 32px 48px 40px 102px;
 }
 
 .word-atlas-practice,
 .word-atlas-anatomy {
-  min-height: 360px;
+  box-sizing: border-box;
+  height: 386.5px;
   padding: 24px;
   border-radius: 14px;
 }
@@ -765,9 +770,9 @@ textarea:-webkit-autofill:focus {
   padding-bottom: 14px;
   margin-top: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 30px;
+  line-height: 24px;
 }
 
 .word-atlas-practice-row {
@@ -794,14 +799,14 @@ textarea:-webkit-autofill:focus {
 
 .word-atlas-practice-row strong {
   color: #fff;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 13.5px;
+  line-height: 19px;
 }
 
 .word-atlas-practice-row small {
   color: #aeb9c9;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 17px;
 }
 
 .word-atlas-anatomy {
@@ -828,7 +833,7 @@ textarea:-webkit-autofill:focus {
 
 .word-atlas-field {
   display: flex;
-  min-height: 40px;
+  min-height: 34.5px;
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid #e8e0d2;
@@ -837,9 +842,9 @@ textarea:-webkit-autofill:focus {
 .word-atlas-field strong {
   color: #25344b;
   font-family: "Baloo Da 2", sans-serif;
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 600;
-  line-height: 22px;
+  line-height: 19px;
 }
 
 @media (max-width: 800px) {
@@ -913,6 +918,7 @@ textarea:-webkit-autofill:focus {
 
   .word-atlas-practice,
   .word-atlas-anatomy {
+    height: auto;
     min-height: auto;
     padding: 16px;
   }
@@ -1273,6 +1279,159 @@ textarea:-webkit-autofill:focus {
   }
 }
 
+/* Student proof cards */
+.student-proof-section {
+  min-height: 802px;
+  padding: 64px 20px 120px;
+  background: #050b18;
+}
+
+.student-proof-section > div {
+  width: min(1152px, 100%);
+  max-width: 1152px;
+}
+
+.student-proof-section #student-stories h2 {
+  font-family: "Baloo Da 2", sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 58px;
+}
+
+.student-proof-section
+  #student-stories
+  > div:first-child
+  > span:not(:nth-child(2)) {
+  display: none;
+}
+
+.student-proof-underline {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 2px auto 0;
+}
+
+.student-proof-track {
+  grid-template-columns: repeat(3, 212.16px) !important;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1152px;
+  margin-top: 24px;
+}
+
+.student-proof-card {
+  width: 212.16px;
+  height: 335.4px;
+  max-width: none;
+  overflow: visible;
+  border-radius: 16px;
+}
+
+.student-proof-card > div:nth-child(4),
+.student-proof-card > div:nth-child(5),
+.student-proof-card > div:nth-child(6) {
+  display: none !important;
+}
+
+.student-proof-card > iframe {
+  border-radius: 16px;
+}
+
+.student-proof-card > div:last-child {
+  position: absolute !important;
+  top: 100% !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 0 !important;
+  z-index: 60 !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 8px 0 0 !important;
+  background: transparent !important;
+}
+
+.student-proof-card > div:last-child > div:first-child {
+  font-family: "Baloo Da 2", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+}
+
+.student-proof-card > div:last-child > div:last-child {
+  font-family: "Baloo Da 2", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 18px !important;
+  color: #b9c3ce !important;
+}
+
+.student-stories-label {
+  display: none;
+}
+
+.student-proof-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .student-proof-section {
+    min-height: 652px;
+    padding: 48px 20px;
+  }
+
+  .student-proof-section > div {
+    width: 350px;
+    max-width: 100%;
+  }
+
+  .student-proof-section #student-stories h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .student-proof-underline {
+    width: 81px;
+  }
+
+  .student-proof-track {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .student-proof-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .student-proof-card {
+    width: 220px;
+    min-width: 220px;
+    height: 410px;
+    border-radius: 20px;
+  }
+
+  .student-proof-card > iframe {
+    border-radius: 20px;
+  }
+
+  .student-proof-swipe-hint {
+    display: block;
+    margin: 16px 0 0;
+    color: #b9c3ce;
+    font-family: "Baloo Da 2", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+  }
+}
+
 /* Learning System */
 .learning-mobile-title {
   display: none;
@@ -1315,7 +1474,8 @@ textarea:-webkit-autofill:focus {
 
 .learning-underline {
   display: block;
-  width: 120px;
+  width: 120px !important;
+  max-width: 120px;
   height: auto;
   margin: 2px 0 0;
 }
@@ -1436,8 +1596,9 @@ textarea:-webkit-autofill:focus {
     line-height: 36px;
   }
 
-  .learning-underline {
-    width: 81px;
+  #decision img.learning-underline {
+    width: 81px !important;
+    max-width: 81px !important;
     margin: 1px auto 0;
   }
 

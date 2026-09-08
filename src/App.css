@@ -7852,49 +7852,38 @@ button {
     }
   }
 }
-#decision > div > div:first-child {
-  width: 100% !important;
-  max-width: 100% !important;
-  grid-template-columns: 1fr !important;
-  gap: 30px !important;
-}
+@media (max-width: 767px) {
+  #decision > div > div:first-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
 
-#decision > div > div:first-child > div {
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-}
+  #decision > div > div:first-child > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
 
-/* IMPORTANT:
-     Fix "শুধু বই নয়—পুরো একটি" clipping
-  */
+  /* Keep the mobile decision copy readable without changing desktop sizing. */
+  #decision p {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 23px !important;
+    overflow-wrap: break-word !important;
+  }
 
-/* Description */
-
-#decision p {
-  width: 100% !important;
-  max-width: 100% !important;
-
-  font-size: 14px !important;
-  line-height: 23px !important;
-
-  overflow-wrap: break-word !important;
-}
-
-/* Book image */
-
-#decision img {
-  display: block !important;
-
-  width: 100% !important;
-  max-width: 520px !important;
-
-  height: auto !important;
-
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-  object-fit: contain !important;
+  #decision img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    height: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-fit: contain !important;
+  }
 }
 
 /* =====================================================
