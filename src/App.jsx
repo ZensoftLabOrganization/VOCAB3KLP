@@ -84,28 +84,97 @@ const featureCards = [
   },
 ];
 
-const learningSteps = [
-  {
-    step: "ধাপ ০১",
-    title: "দেখুন ও বুঝুন",
-    desc: "শব্দ, বাংলা অর্থ, উচ্চারণ ও Example দেখুন।",
-  },
-  {
-    step: "ধাপ ০২",
-    title: "শুনুন ও বলুন",
-    desc: "Audio শুনুন, নিজে উচ্চারণ করুন; দরকার হলে Video দেখুন।",
-  },
-  {
-    step: "ধাপ ০৩",
-    title: "ব্যবহার করে দেখুন",
-    desc: "Example বুঝুন, নিজের বাক্যে ব্যবহার করুন এবং App-এ Practice করুন।",
-  },
-  {
-    step: "ধাপ ০৪",
-    title: "মনে করুন ও Revision দিন",
-    desc: "বই না দেখে মনে করার চেষ্টা করুন; নিশ্চিত হলে টিক দিন।",
-  },
-];
+function TypewriterSequence({ speed = 115 }) {
+  const [firstText, setFirstText] = useState("");
+  const [secondText, setSecondText] = useState("");
+  const [activeLine, setActiveLine] = useState(null);
+
+  useEffect(() => {
+    const segment = (text) =>
+      typeof Intl !== "undefined" && Intl.Segmenter
+        ? Array.from(
+            new Intl.Segmenter("bn", { granularity: "grapheme" }).segment(text),
+            ({ segment: grapheme }) => grapheme,
+          )
+        : Array.from(text);
+    const firstLetters = segment("অক্সফোর্ড ৩০০০ ভোকাব");
+    const secondLetters = segment("সম্পূর্ণ লার্নিং সিস্টেম");
+    const timeoutIds = new Set();
+    const intervalIds = new Set();
+    let isCancelled = false;
+
+    const schedule = (callback, delay) => {
+      const timeoutId = window.setTimeout(() => {
+        timeoutIds.delete(timeoutId);
+        callback();
+      }, delay);
+      timeoutIds.add(timeoutId);
+    };
+
+    const typeLine = (letters, setText, line, onComplete) => {
+      setActiveLine(line);
+      let currentIndex = 0;
+      const intervalId = window.setInterval(() => {
+        currentIndex += 1;
+        setText(letters.slice(0, currentIndex).join(""));
+        if (currentIndex >= letters.length) {
+          window.clearInterval(intervalId);
+          intervalIds.delete(intervalId);
+          onComplete();
+        }
+      }, speed);
+      intervalIds.add(intervalId);
+    };
+
+    const runSequence = () => {
+      if (isCancelled) return;
+      setFirstText("");
+      setSecondText("");
+      typeLine(firstLetters, setFirstText, "first", () => {
+        schedule(() => {
+          typeLine(secondLetters, setSecondText, "second", () => {
+            setActiveLine(null);
+            schedule(runSequence, 5000);
+          });
+        }, 1100);
+      });
+    };
+
+    schedule(runSequence, 240);
+    return () => {
+      isCancelled = true;
+      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      intervalIds.forEach((intervalId) => window.clearInterval(intervalId));
+    };
+  }, [speed]);
+
+  return (
+    <>
+      <h1
+        className="hero-title-primary hero-typewriter mt-8 max-w-[505px] text-[clamp(2.25rem,4.2vw,3.625rem)] font-['Baloo_Da_2'] font-semibold leading-[1.35] tracking-[-2.27px] text-[#E8B84E] lg:whitespace-nowrap"
+        aria-label="অক্সফোর্ড ৩০০০ ভোকাব"
+      >
+        <span className="hero-typewriter-text">
+          {firstText}
+          {activeLine === "first" && (
+            <span className="hero-typewriter-cursor" aria-hidden="true" />
+          )}
+        </span>
+      </h1>
+      <h2
+        className="hero-title-secondary hero-typewriter mt-1 max-w-[505px] text-[clamp(2rem,3.9vw,3.625rem)] font-['Baloo_Da_2'] font-semibold leading-[1.35] tracking-[-2.27px] text-white lg:whitespace-nowrap"
+        aria-label="সম্পূর্ণ লার্নিং সিস্টেম"
+      >
+        <span className="hero-typewriter-text">
+          {secondText}
+          {activeLine === "second" && (
+            <span className="hero-typewriter-cursor" aria-hidden="true" />
+          )}
+        </span>
+      </h2>
+    </>
+  );
+}
 
 function CardIcon({ type, className = "" }) {
   const common = "h-5 w-5 stroke-current fill-none stroke-[1.8]";
@@ -557,34 +626,21 @@ function App() {
       )}
 
       {/* Section - 01 */}
-<<<<<<< Updated upstream
-      <section id="top" className="relative overflow-hidden bg-[#060b18]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(65,118,255,0.34),transparent_0_22%),radial-gradient(circle_at_82%_70%,rgba(249,199,75,0.12),transparent_0_18%),linear-gradient(180deg,#060b18_0%,#0b172f_100%)]" />
-        <div className="relative mx-auto max-w-[1240px] px-3 pb-4 pt-[92px] sm:px-5 sm:pt-[96px] lg:px-0 lg:pt-[84px]">
-          <Header
-            mobileMenuOpen={mobileMenuOpen}
-            setMobileMenuOpen={setMobileMenuOpen}
-            activeSection={activeSection}
-            scrollProgress={scrollProgress}
-          />
-
-          <div className="grid items-center gap-6 px-3 pb-10 pt-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:pt-24">
-            <div className="max-w-[560px] lg:pr-6">
-=======
       <section
         id="top"
-        className="relative overflow-hidden bg-[#060b18]"
+        className="relative overflow-hidden bg-[#040914]"
         style={{ height: "829px", opacity: 1, transform: "rotate(0deg)" }}
       >
         <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(65,118,255,0.34),transparent_0_22%),radial-gradient(circle_at_82%_70%,rgba(249,199,75,0.12),transparent_0_18%),linear-gradient(180deg,#060b18_0%,#0b172f_100%)]"
+          className="absolute inset-0 bg-[radial-gradient(80.27%_167.79%_at_76%_46%,#183C69_0%,#071229_44%,#040914_82%)]"
           style={{ height: "829px", opacity: 1, transform: "rotate(0deg)" }}
         />
-        <div className="relative mx-auto flex h-full max-w-[1240px] flex-col px-3 pb-4 pt-[92px] sm:px-5 sm:pt-[96px] lg:px-0 lg:pt-[84px]">
-          <div className="grid flex-1 items-center gap-4 px-3 pb-10 pt-8 sm:px-5 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-6 lg:px-8 lg:pt-24">
-            <div className="hero-copy order-2 mx-auto w-full max-w-[560px] text-center lg:order-1 lg:pr-6 lg:text-left">
->>>>>>> Stashed changes
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#f7c84f]/30 bg-[#0c1426] px-4 py-2 text-[0.72rem] font-medium text-[#f7c84f] shadow-soft">
+        <div className="pointer-events-none absolute left-[7%] top-[50%] h-[182px] w-[182px] rounded-full bg-[#74DDEA]/[0.08] blur-[75px]" />
+        <div className="pointer-events-none absolute left-[67%] top-[13%] h-[336px] w-[336px] rounded-full bg-[#E8B84E]/[0.09] blur-[12px]" />
+        <div className="relative mx-auto flex h-full max-w-[1152px] flex-col justify-center px-4 py-[72px] sm:px-6 lg:px-0">
+          <div className="grid flex-1 items-center gap-6 lg:grid-cols-[504px_568px] lg:gap-[79px]">
+            <div className="hero-copy order-2 mx-auto flex w-full max-w-[504px] flex-col justify-center text-center lg:order-1 lg:text-left">
+              <div className="inline-flex h-[34.24px] min-h-[30.4px] w-fit items-center gap-[7.2px] rounded-full border border-[#E8B84E]/30 bg-[#E8B84E]/[0.08] px-[11.52px] py-[5.12px] font-['Baloo_Da_2'] text-[12.8px] font-semibold leading-[22px] tracking-[-0.06px] text-[#FFF0B7]">
                 <span className="text-sm" aria-hidden="true">
                   <img
                     src={sparkleIcon}
@@ -595,48 +651,16 @@ function App() {
                 বাংলাদেশে আমরাই প্রথম
               </div>
 
-              <h1
-                className="hero-title-primary mt-8 whitespace-nowrap text-[clamp(2.15rem,5vw,4.12rem)] font-black tracking-[-0.05em] text-[#f8cb54] leading-[0.98]"
-                aria-label="Oxford 3000 Vocab"
-              >
-                {["Oxford", "3000", "Vocab"].map((word, index) => (
-                  <span
-                    key={word}
-                    className="hero-word mr-[0.28em] last:mr-0"
-                    style={{ animationDelay: `${index * 140}ms` }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </h1>
-              <h2
-                className="hero-title-secondary mt-3 whitespace-nowrap text-[clamp(2rem,4.1vw,3.18rem)] font-black tracking-[-0.05em] text-white leading-[1.02]"
-                aria-label="Complete Learning System"
-              >
-                {["Complete", "Learning", "System"].map((word, index) => (
-                  <span
-                    key={word}
-                    className="hero-word mr-[0.28em] last:mr-0"
-                    style={{ animationDelay: `${420 + index * 140}ms` }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </h2>
+              <TypewriterSequence />
 
-<<<<<<< Updated upstream
-              <p className="mt-8 max-w-[34rem] text-[0.98rem] leading-8 text-white/65 sm:text-[1.02rem]">
-                বই, App, Audio, Video ও Practice - সব একসাথে।
-=======
-              <p className="mt-5 max-w-[34rem] text-[0.98rem] leading-8 text-white/65 sm:text-[1.02rem] lg:mt-8">
+              <p className="mt-4 max-w-[512px] font-['Baloo_Da_2'] text-[17px] font-normal leading-[31px] tracking-[-0.44px] text-[#B8C4D5] sm:text-[20px] lg:mt-4">
                 বই, অ্যাপ, অডিও, ভিডিও ও প্র্যাকটিস—সব একসাথে।
->>>>>>> Stashed changes
               </p>
 
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#order"
-                  className="flex h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-center text-sm font-extrabold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105"
+                  className="flex h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-transparent bg-[#E8B84E] px-[18.4px] py-[12.48px] text-center font-['Baloo_Da_2'] text-[15.2px] font-bold leading-[19px] tracking-[-0.325px] text-[#071526] transition hover:-translate-y-0.5 hover:brightness-105"
                 >
                   এখনই অর্ডার করুন
                   <svg
@@ -656,7 +680,7 @@ function App() {
                 </a>
                 <a
                   href="#book"
-                  className="flex h-[46.938px] min-h-[46.4px] w-full max-w-[242.047px] shrink-0 items-center justify-center gap-[8.8px] rounded-[12px] border border-white/20 bg-white/[0.04] px-[18.4px] py-[12.48px] text-center text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/[0.08]"
+                  className="flex h-[46.938px] min-h-[46.4px] w-full max-w-[222.8px] shrink-0 items-center justify-center gap-[8.8px] rounded-[12px] border border-[#DCE8F1]/[0.45] bg-transparent px-10 py-[12.48px] text-center font-['Baloo_Da_2'] text-[15.2px] font-bold leading-[19px] tracking-[-0.325px] text-white/[0.92] transition hover:border-white/70 hover:bg-white/[0.08]"
                 >
                   <span>বইয়ের ভেতর দেখুন</span>
                   <svg
@@ -665,7 +689,7 @@ function App() {
                     aria-hidden="true"
                   >
                     <path
-                      d="M5.5 7.5 10 12l4.5-4.5"
+                      d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"
                       fill="none"
                       stroke="currentColor"
                       strokeLinecap="round"
@@ -676,11 +700,7 @@ function App() {
                 </a>
               </div>
 
-<<<<<<< Updated upstream
-              <div className="mt-4 flex items-center gap-2 text-sm text-white/55">
-                <span className="text-[#69d7a7]">✓</span>
-=======
-              <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/55 lg:justify-start">
+              <div className="mt-3 flex items-center justify-center gap-[7.2px] font-['Baloo_Da_2'] text-[13.44px] font-normal leading-[23px] tracking-[-0.108px] text-[#B8C4D5] lg:justify-start">
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4 shrink-0 text-[#B6C8DB]"
@@ -702,16 +722,11 @@ function App() {
                     strokeWidth="1.75"
                   />
                 </svg>
->>>>>>> Stashed changes
                 সারা দেশে ক্যাশ অন ডেলিভারি
               </div>
             </div>
 
-<<<<<<< Updated upstream
-            <div className="relative w-[min(100%,640px)] justify-self-center translate-x-0 lg:justify-self-end lg:translate-x-6">
-=======
-            <div className="hero-artwork order-1 relative mx-auto w-full max-w-[420px] justify-self-center translate-x-0 lg:order-2 lg:max-w-[640px] lg:justify-self-end lg:translate-x-6">
->>>>>>> Stashed changes
+            <div className="hero-artwork order-1 relative mx-auto w-full max-w-[568.59px] justify-self-center translate-x-0 lg:order-2 lg:translate-x-0">
               <img
                 src={heroArtwork}
                 alt="Oxford 3000 vocabulary pack"
@@ -719,9 +734,7 @@ function App() {
               />
             </div>
           </div>
-<<<<<<< Updated upstream
-
-          <div className="mx-3 grid grid-cols-2 gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
+          <div className="mx-3 hidden grid-cols-2 gap-4 border-t border-white/10 pb-8 pt-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-0 lg:px-8">
             {[
               ["৩,০০০", "মূল শব্দ"],
               ["৩,০০০", "Dedicated Video"],
@@ -741,8 +754,6 @@ function App() {
               </div>
             ))}
           </div>
-=======
->>>>>>> Stashed changes
         </div>
       </section>
 
@@ -783,7 +794,7 @@ function App() {
                   <img
                     src={videoThumb}
                     alt="Watch 1 minute"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="video-thumbnail absolute inset-0 h-full w-full object-cover"
                   />
                   <button
                     type="button"
@@ -878,64 +889,6 @@ function App() {
         </div>
       </section>
 
-<<<<<<< Updated upstream
-      <section className="relative flex min-h-[670px] flex-col items-center justify-center self-stretch overflow-hidden bg-[linear-gradient(170deg,#040914_6.17%,#071022_93.83%)] px-6 py-24 text-white">
-        <div className="relative z-10 mx-auto w-full max-w-[896px] text-center">
-          <div className="text-[0.72rem] font-bold uppercase tracking-[0.42em] text-[#f7c84f]">
-            THE MASTERY LOOP
-          </div>
-          <h2 className="mt-4 text-[clamp(2rem,4vw,3rem)] font-normal tracking-[-0.04em] text-white">
-            একটি শব্দ শিখবেন যেভাবে
-          </h2>
-          <p className="mx-auto mt-5 max-w-[620px] text-sm leading-7 text-white/45 sm:text-[0.95rem]">
-            চারটি ধাপ পরপর একসঙ্গে কাজ করে — দেখা, শোনা, বলা ও রিভিশন একই ছন্দে।
-          </p>
-
-          <div className="mastery-loop-grid mt-14 text-left">
-            {learningSteps.map((step, index) => {
-              const cardStyles = [
-                "border-[#8f6d2a]/45 bg-[#1a1b1d]",
-                "border-[#2f7592]/45 bg-[#0d1c2c]",
-                "border-[#5451a6]/45 bg-[#13152f]",
-                "border-[#9b6334]/45 bg-[#1b191f]",
-              ];
-              const textStyles = [
-                "text-[#f7c84f]",
-                "text-[#72d9e8]",
-                "text-[#a99aff]",
-                "text-[#f7a23e]",
-              ];
-
-              return (
-                <article
-                  key={step.step}
-                  className={`relative min-h-[144px] overflow-hidden rounded-[16px] border p-7 ${cardStyles[index]}`}
-                >
-                  <div
-                    className={`text-[0.68rem] font-bold uppercase tracking-[0.28em] ${textStyles[index]}`}
-                  >
-                    {step.step}
-                  </div>
-                  <h3 className="mt-4 text-[1.18rem] font-normal text-white sm:text-[1.3rem]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-[0.82rem] leading-6 text-white/60 sm:text-sm">
-                    {step.desc}
-                  </p>
-                  <div
-                    className={`absolute -bottom-8 -right-3 text-[6rem] font-black leading-none opacity-[0.06] ${textStyles[index]}`}
-                  >
-                    {index + 1}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-=======
->>>>>>> Stashed changes
       <section
         id="book"
         className="relative overflow-hidden bg-[#f0e8df] px-4 py-20 sm:py-24 lg:py-28 text-[#102034]"
@@ -1187,20 +1140,6 @@ function App() {
                     </span>
                   </button>
                 </div>
-
-                {/* ================= KEYBOARD HINT ================= */}
-                <p
-                  className="
-      mt-[16px]
-      font-['Inter']
-      text-[10px]
-      font-normal
-      tracking-[1px]
-      text-[#B7A88E]
-    "
-                >
-                  ← → arrow keys to flip pages
-                </p>
               </div>
             </div>
           </div>
@@ -1422,6 +1361,7 @@ function App() {
                 src={androidApp}
                 alt="Book and digital learning support"
                 className="
+            decision-artwork
             block
               w-full
               max-w-[600px]
@@ -4060,9 +4000,10 @@ function App() {
       {/* =========================================================
     ANDROID COMPANION
 ========================================================= */}
-      <section
-        id="android-app"
-        className="
+      {false && (
+        <section
+          id="android-app"
+          className="
     relative
     overflow-hidden
     bg-[#FDEEC2]
@@ -4074,9 +4015,9 @@ function App() {
     lg:px-8
     lg:py-[86.4px]
   "
-      >
-        <div
-          className="
+        >
+          <div
+            className="
       mx-auto
       flex
       w-full
@@ -4087,12 +4028,12 @@ function App() {
       lg:items-start
       lg:justify-between
     "
-        >
-          {/* =======================================================
+          >
+            {/* =======================================================
         LEFT CONTENT
     ======================================================= */}
-          <div
-            className="android-copy
+            <div
+              className="android-copy
         flex
         w-full
         max-w-[447.55px]
@@ -4100,18 +4041,18 @@ function App() {
         items-start
         lg:mt-[1px]
       "
-          >
-            {/* ANDROID COMPANION */}
-            <div
-              className="
+            >
+              {/* ANDROID COMPANION */}
+              <div
+                className="
           flex
           h-[36.19px]
           w-full
           items-start
         "
-            >
-              <div
-                className="
+              >
+                <div
+                  className="
             flex
             h-[17px]
             items-center
@@ -4124,24 +4065,24 @@ function App() {
             tracking-[1.56px]
             text-[#73500C]
           "
-              >
-                <span
-                  className="
+                >
+                  <span
+                    className="
               h-[2px]
               w-[16px]
               shrink-0
               rounded-full
               bg-[#73500C]
             "
-                />
+                  />
 
-                <span>ANDROID COMPANION</span>
+                  <span>ANDROID COMPANION</span>
+                </div>
               </div>
-            </div>
 
-            {/* MAIN HEADING */}
-            <h2
-              className="
+              {/* MAIN HEADING */}
+              <h2
+                className="
           m-0
           w-full
           max-w-[448px]
@@ -4152,13 +4093,13 @@ function App() {
           tracking-[-0.7929px]
           text-[#0A1730]
         "
-            >
-              ফ্রি Android App ডাউনলোড করুন
-            </h2>
+              >
+                ফ্রি Android App ডাউনলোড করুন
+              </h2>
 
-            {/* DESCRIPTION */}
-            <p
-              className="
+              {/* DESCRIPTION */}
+              <p
+                className="
           m-0
           mt-[14.39px]
           w-full
@@ -4170,13 +4111,13 @@ function App() {
           tracking-[-0.3125px]
           text-[#0A1730]
         "
-            >
-              Offline—যেকোনো সময় Practice করুন।
-            </p>
+              >
+                Offline—যেকোনো সময় Practice করুন।
+              </p>
 
-            {/* FREE ACCESS NOTE */}
-            <div
-              className="
+              {/* FREE ACCESS NOTE */}
+              <div
+                className="
           mt-[17.59px]
           mb-[21.59px]
           box-border
@@ -4189,9 +4130,9 @@ function App() {
           border-[#1F9FB5]
           pl-[13.6px]
         "
-            >
-              <p
-                className="
+              >
+                <p
+                  className="
             m-0
             font-['Hind_Siliguri']
             text-[14.08px]
@@ -4200,28 +4141,28 @@ function App() {
             tracking-[-0.15675px]
             text-[#0A1730]
           "
-              >
-                বইয়ের সঙ্গে ডেডিকেটেড Android App-এর অ্যাক্সেস সম্পূর্ণ ফ্রি।
-              </p>
-            </div>
+                >
+                  বইয়ের সঙ্গে ডেডিকেটেড Android App-এর অ্যাক্সেস সম্পূর্ণ ফ্রি।
+                </p>
+              </div>
 
-            {/* =======================================================
+              {/* =======================================================
           DOWNLOAD BUTTON
           APP LINK
       ======================================================= */}
-            <div
-              className="
+              <div
+                className="
           flex
           h-[46.94px]
           w-full
           items-start
         "
-            >
-              <a
-                href="https://app.englishcommando.bd/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
+              >
+                <a
+                  href="https://app.englishcommando.bd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
             box-border
             flex
             h-[46.94px]
@@ -4250,49 +4191,49 @@ function App() {
             hover:-translate-y-[2px]
             hover:shadow-[0px_14px_30px_rgba(248,201,75,0.28),inset_0px_1px_0px_rgba(255,255,255,0.5)]
           "
-              >
-                <span className="whitespace-nowrap">ডাউনলোড করুন</span>
-
-                {/* Download Icon */}
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="shrink-0"
                 >
-                  <path
-                    d="M12 4V15"
-                    stroke="#071229"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                  />
+                  <span className="whitespace-nowrap">ডাউনলোড করুন</span>
 
-                  <path
-                    d="M7.5 11.5L12 16L16.5 11.5"
-                    stroke="#071229"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  {/* Download Icon */}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="shrink-0"
+                  >
+                    <path
+                      d="M12 4V15"
+                      stroke="#071229"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    />
 
-                  <path
-                    d="M5 20H19"
-                    stroke="#071229"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </a>
+                    <path
+                      d="M7.5 11.5L12 16L16.5 11.5"
+                      stroke="#071229"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+
+                    <path
+                      d="M5 20H19"
+                      stroke="#071229"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* =======================================================
+            {/* =======================================================
         RIGHT CONTENT
     ======================================================= */}
-          <div
-            className="
+            <div
+              className="
         relative
         mt-[45px]
         flex
@@ -4302,39 +4243,42 @@ function App() {
         items-center
         lg:mt-0
       "
-          >
-            {/* =====================================================
+            >
+              {/* =====================================================
           ANDROID APP IMAGE
       ===================================================== */}
-            <div
-              className="
+              <div
+                className="
           flex
-          h-[334px]
+          h-[360px]
           w-full
           items-center
           justify-center
+          sm:h-[400px]
         "
-            >
-              <img
-                src={androidApp}
-                alt="Dedicated Android App — Word Practice, Audio, Video and Progress"
-                className="
+              >
+                <img
+                  src={androidApp}
+                  alt="Dedicated Android App — Word Practice, Audio, Video and Progress"
+                  className="
             block
-            h-[334px]
-            w-[344px]
+                h-[360px]
+                w-[370px]
             max-w-full
             select-none
             object-contain
             drop-shadow-[0px_18px_48px_rgba(0,0,0,0.25)]
+                sm:h-[400px]
+                sm:w-[430px]
           "
-              />
-            </div>
+                />
+              </div>
 
-            {/* =====================================================
+              {/* =====================================================
           SUPPORT PILLS
       ===================================================== */}
-            <div
-              className="
+              <div
+                className="
           mt-[24px]
           flex
           w-full
@@ -4346,10 +4290,10 @@ function App() {
           lg:flex-nowrap
           lg:justify-center
         "
-            >
-              {/* Word Practice */}
-              <span
-                className="
+              >
+                {/* Word Practice */}
+                <span
+                  className="
             box-border
             flex
             h-[46.4px]
@@ -4372,13 +4316,13 @@ function App() {
             text-[#071229]
             shadow-[0px_7px_17px_rgba(4,9,20,0.06)]
           "
-              >
-                Word Practice
-              </span>
+                >
+                  Word Practice
+                </span>
 
-              {/* Audio */}
-              <span
-                className="
+                {/* Audio */}
+                <span
+                  className="
             box-border
             flex
             h-[46.4px]
@@ -4401,13 +4345,13 @@ function App() {
             text-[#071229]
             shadow-[0px_7px_17px_rgba(4,9,20,0.06)]
           "
-              >
-                Audio
-              </span>
+                >
+                  Audio
+                </span>
 
-              {/* Video */}
-              <span
-                className="
+                {/* Video */}
+                <span
+                  className="
             box-border
             flex
             h-[46.4px]
@@ -4430,13 +4374,13 @@ function App() {
             text-[#071229]
             shadow-[0px_7px_17px_rgba(4,9,20,0.06)]
           "
-              >
-                Video
-              </span>
+                >
+                  Video
+                </span>
 
-              {/* Progress */}
-              <span
-                className="
+                {/* Progress */}
+                <span
+                  className="
             box-border
             flex
             h-[46.4px]
@@ -4459,13 +4403,14 @@ function App() {
             text-[#071229]
             shadow-[0px_7px_17px_rgba(4,9,20,0.06)]
           "
-              >
-                Progress
-              </span>
+                >
+                  Progress
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Section - 11 */}
 
@@ -4551,7 +4496,7 @@ function App() {
               "
                   />
 
-                  <span>প্রশ্ন ও উত্তর</span>
+                  <span>QUESTIONS, ANSWERED</span>
                 </div>
               </div>
 
@@ -5426,7 +5371,12 @@ function App() {
             </h2>
             <p className="mt-1 font-['Baloo_Da_2'] text-[16px] leading-[27px] text-white/65">
               হাতে পেয়ে দেখুন—পছন্দ না হলে ১০০% টাকা ফেরত। সহায়তা:
-              0140-545-8800-2
+              <a
+                href="tel:01405458800"
+                className="guarantee-number inline-block align-middle font-bold text-[#f7d77d] underline decoration-[#f7d77d]/70 underline-offset-4 transition hover:text-[#ffe29a]"
+              >
+                0140-545-8800-2
+              </a>
             </p>
           </div>
           <a
@@ -5456,7 +5406,7 @@ function App() {
         className="
     relative
     overflow-hidden
-    bg-[#071229]
+    bg-[#0B2238]
     px-4
     py-12
     sm:px-6
@@ -5795,53 +5745,57 @@ function App() {
               className="
           relative
           mt-[10px]
+          flex
           min-h-[74.4px]
+          items-center
+          gap-[12px]
           rounded-[14px]
           border
-          border-[rgba(255,255,255,0.12)]
-          bg-[rgba(255,255,255,0.055)]
-          px-[62px]
-          py-[24px]
+          border-[rgba(248,201,75,0.12)]
+          bg-[linear-gradient(135deg,rgba(248,201,75,0.05),rgba(255,255,255,0.02))]
+          px-[14px]
+          py-[18px]
+          shadow-[0_10px_22px_rgba(0,0,0,0.08)]
+          sm:px-[18px]
         "
+              aria-label="Cash on delivery service"
             >
-              {/* Icon */}
-              <div
-                className="
-            absolute
-            left-[11.4px]
-            top-[17.61px]
-            flex
-            h-[39.2px]
-            w-[39.2px]
-            items-center
-            justify-center
-            rounded-[11.2px]
-            border
-            border-[rgba(248,201,75,0.22)]
-            bg-[rgba(248,201,75,0.13)]
-          "
-              >
-                <svg width="19.2" height="19.2" viewBox="0 0 24 24" fill="none">
-                  <rect
-                    x="3"
-                    y="6"
-                    width="18"
-                    height="12"
-                    rx="2"
-                    stroke="#F8C94B"
-                    strokeWidth="1.75"
+              <div className="order-cod-visual" aria-hidden="true">
+                <svg viewBox="0 0 84 84" role="img" aria-hidden="true">
+                  <path
+                    d="M18 50C18 35.64 29.94 24 44 24C58.06 24 70 35.64 70 50C70 58.15 66.17 65.32 60.28 70.36"
+                    stroke="rgba(255,230,160,0.92)"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    fill="none"
+                    strokeDasharray="4 7"
                   />
-
-                  <path d="M3 10H21" stroke="#F8C94B" strokeWidth="1.75" />
-
-                  <path d="M12 10V18" stroke="#F8C94B" strokeWidth="1.75" />
-
+                  <path
+                    d="M24 56L38 48L49 58L60 40"
+                    stroke="rgba(248,201,75,0.96)"
+                    strokeWidth="2.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                  />
                   <circle
-                    cx="12"
-                    cy="13"
-                    r="1.5"
-                    stroke="#F8C94B"
-                    strokeWidth="1.75"
+                    className="order-cod-dot"
+                    cx="60"
+                    cy="40"
+                    r="4.6"
+                    fill="#F8C94B"
+                  />
+                  <circle
+                    cx="44"
+                    cy="24"
+                    r="6.2"
+                    fill="rgba(248,201,75,0.12)"
+                  />
+                  <path
+                    d="M44 16.5V20.5M44 27.5V31.5M37.5 24H41.5M46.5 24H50.5"
+                    stroke="rgba(248,201,75,0.7)"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
                   />
                 </svg>
               </div>
@@ -5849,13 +5803,14 @@ function App() {
               <p
                 className="
             m-0
-            whitespace-nowrap
+            whitespace-normal
             font-['Hind_Siliguri']
             text-[14px]
             font-normal
             leading-[23px]
             text-[#FFFDF8]
             sm:text-[16px]
+            max-[520px]:text-[13px]
           "
               >
                 হাতে পেয়ে দেখে তারপর পেমেন্ট করুন
@@ -5963,6 +5918,7 @@ function App() {
                 <span
                   className="
               whitespace-nowrap
+              order-ribbon-full
               font-['Hind_Siliguri']
               text-[11px]
               font-normal
@@ -5973,6 +5929,9 @@ function App() {
             "
                 >
                   সারা দেশে ক্যাশ অন ডেলিভারি — ফ্রি ডেলিভারি
+                </span>
+                <span className="order-ribbon-mobile whitespace-nowrap font-['Baloo_Da_2'] text-[13px] font-medium leading-[18px] text-white">
+                  সারা দেশে ক্যাশ অন ডেলিভারি
                 </span>
               </div>
 
@@ -6319,7 +6278,7 @@ function App() {
         ================================================= */}
               <button
                 type="submit"
-                className="
+                className="order-button
             box-border
             flex
             h-[46.94px]

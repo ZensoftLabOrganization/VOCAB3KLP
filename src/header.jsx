@@ -31,23 +31,27 @@ function Header({
   }, [mobileMenuOpen, setMobileMenuOpen]);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-[100] h-[80px] min-h-[80px] w-full bg-[#050811] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-      <div className="mx-auto flex h-[80px] min-h-[80px] w-full max-w-[1152px] items-center justify-between px-4 sm:px-6 lg:px-0">
+    <header className="mobile-header fixed left-0 right-0 top-0 z-[100] box-border flex h-[101px] min-h-[80px] w-full flex-col items-start border-b border-white/[0.09] bg-[#050B18] px-0 py-[10px] shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+      <div className="mobile-header-inner mx-auto flex h-[80px] min-h-[80px] w-full max-w-[1152px] items-center justify-between gap-6 px-4 sm:px-6 lg:px-0">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3" aria-label="Homepage">
-          <div className="flex items-center gap-2 sm:gap-3">
+        <a
+          href="/"
+          className="mobile-header-logo flex items-center gap-3"
+          aria-label="Homepage"
+        >
+          <div className="flex items-center gap-[10.4px]">
             <img
               src={logo}
               alt="Oxford 3000 logo"
-              className="h-10 w-10 shrink-0 rounded-full object-contain sm:h-11 sm:w-11"
+              className="mobile-header-logo-image h-[37.64px] w-[49.59px] shrink-0 object-contain"
             />
 
             <div>
-              <div className="font-['Baloo_Da_2'] text-[15.36px] font-bold leading-[16.13px] tracking-[-0.03px] text-white">
+              <div className="mobile-header-title font-['Baloo_Da_2'] text-[15.36px] font-bold leading-[16.13px] tracking-[-0.03px] text-white">
                 অক্সফোর্ড ৩০০০
               </div>
 
-              <div className="whitespace-nowrap font-['Baloo_Da_2'] text-[11.36px] font-semibold leading-[11.93px] tracking-[1.18px] text-[#E8B84E]">
+              <div className="mobile-header-subtitle whitespace-nowrap font-['Baloo_Da_2'] text-[11.36px] font-semibold leading-[11.93px] tracking-[1.18px] text-[#E8B84E]">
                 ভোকাবুলারি সিস্টেম
               </div>
             </div>
@@ -55,7 +59,7 @@ function Header({
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 text-sm text-white/84 xl:flex">
+        <nav className="hidden h-[46.94px] items-center gap-5 text-sm text-white/84 xl:flex">
           {[
             ["how-it-works", "কীভাবে কাজ করে"],
             ["book", "বই দেখুন"],
@@ -67,7 +71,7 @@ function Header({
             <a
               key={id}
               href={`#${id}`}
-              className={`nav-menu-link whitespace-nowrap rounded-md px-2 py-1 font-medium transition ${
+              className={`nav-menu-link flex h-11 items-center whitespace-nowrap rounded-md px-[5.6px] font-['Baloo_Da_2'] text-[13.12px] font-semibold leading-[22px] tracking-[-0.084px] transition ${
                 activeSection === id
                   ? "bg-white/12 text-white"
                   : "hover:text-white"
@@ -78,29 +82,28 @@ function Header({
           ))}
         </nav>
 
-<<<<<<< Updated upstream
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          aria-label={mobileMenuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
-          aria-expanded={mobileMenuOpen}
-          onClick={() => setMobileMenuOpen((open) => !open)}
-          className="ml-auto grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-white transition hover:bg-white/10 xl:hidden"
-=======
         {/* Mobile Order Button */}
         <a
           href="#order"
-          className="mr-2 flex h-[44px] w-[146px] shrink-0 items-center justify-center gap-[8px] whitespace-nowrap rounded-[12px] border border-[#FFE38E]/40 bg-[#F8C94B] px-[12px] py-[10px] text-[12px] font-bold text-[#10172a] shadow-[0_8px_20px_rgba(248,201,75,0.22),0_0_0_1px_rgba(255,227,142,0.16)] transition hover:brightness-105 max-[420px]:w-[120px] max-[420px]:gap-[4px] max-[420px]:px-[8px] xl:hidden"
->>>>>>> Stashed changes
+          onClick={() => setMobileMenuOpen(false)}
+          className="mobile-order-cta flex h-11 w-[118px] shrink-0 items-center justify-center gap-2 rounded-[12px] bg-[#E8B84E] font-['Baloo_Da_2'] text-[15px] font-semibold leading-5 text-[#071526] transition hover:brightness-105 xl:hidden"
         >
-          <span className="sr-only">মেনু</span>
-
-          <span className="flex w-5 flex-col gap-1.5">
-            <span className="h-0.5 w-full bg-current" />
-            <span className="h-0.5 w-full bg-current" />
-            <span className="h-0.5 w-full bg-current" />
-          </span>
-        </button>
+          <span>অর্ডার করুন</span>
+          <svg
+            viewBox="0 0 20 20"
+            className="h-[18px] w-[18px] shrink-0"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.75"
+            />
+          </svg>
+        </a>
 
         {/* Mobile Navigation Toggle */}
         <button
@@ -129,7 +132,7 @@ function Header({
         {/* Desktop Order Button */}
         <a
           href="#order"
-          className="hidden h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[linear-gradient(135deg,#FFE38E_0%,#F8C94B_46%,#F2B81E_100%)] px-[18.4px] py-[12.48px] text-sm font-bold text-[#10172a] shadow-[0_11px_26px_0_rgba(248,201,75,0.22),0_1px_0_0_rgba(255,255,255,0.50)_inset] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
+          className="hidden h-[46.938px] min-h-[46.4px] w-[242.047px] items-center justify-center gap-[8.8px] rounded-[12px] border border-[rgba(0,0,0,0)] bg-[#E8B84E] px-[18.4px] py-[12.48px] font-['Baloo_Da_2'] text-[15.2px] font-bold leading-[19px] tracking-[-0.325px] text-[#071526] transition hover:-translate-y-0.5 hover:brightness-105 xl:flex"
         >
           অর্ডার করুন
           <svg

@@ -8417,6 +8417,54 @@ button {
   left: -16px;
 }
 
+/* The atlas is intentionally wider than the text column: it reads as a
+   full-width book spread, with the two offset sheets visible behind it. */
+@media (min-width: 761px) {
+  .word-atlas-shell {
+    width: min(1314px, calc(100vw - 52px));
+    height: 646px;
+    /* Keep the spread centred without creating a stacking context.  The
+       offset sheets use negative z-index, so transform would place them
+       over the white page. */
+    margin-left: max(-97px, calc((1172px - 100vw) / 2));
+    padding-left: 44px;
+    border-radius: 14px 20px 20px 14px;
+  }
+
+  .word-atlas-shell::before,
+  .word-atlas-shell::after {
+    border-radius: 14px 20px 20px 14px;
+  }
+
+  .word-atlas-spine {
+    width: 42px;
+    border-radius: 14px 0 0 14px;
+  }
+
+  .word-atlas-topbar {
+    width: 100%;
+    height: 120px;
+    padding: 28px 48px 22px 72px;
+  }
+
+  .word-atlas-body {
+    grid-template-columns: 393px minmax(0, 730px);
+    gap: 18px;
+    padding: 36px 54px 20px 72px;
+  }
+
+  .word-atlas-practice,
+  .word-atlas-anatomy {
+    height: 440px;
+    min-height: 440px;
+  }
+
+  .word-atlas-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6px;
+  }
+}
+
 .word-atlas-spine {
   position: absolute;
   z-index: 3;
@@ -8603,12 +8651,56 @@ button {
 }
 
 .word-atlas-field {
+  position: relative;
   min-width: 0;
   min-height: 34.34px;
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 8px 10px 8px 6px;
   border-bottom: 1px solid #e5ded0;
+  border-radius: 10px;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+  animation: wordAtlasRowGlow 5s ease-in-out infinite;
+}
+
+.word-atlas-field:nth-child(2n) {
+  animation-delay: 0.35s;
+}
+
+.word-atlas-field::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(232, 184, 78, 0.18),
+    rgba(232, 184, 78, 0.04),
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  content: "";
+}
+
+.word-atlas-field:hover {
+  transform: translateX(4px);
+  border-color: rgba(232, 184, 78, 0.7);
+  box-shadow: 0 8px 16px rgba(16, 29, 52, 0.04);
+}
+
+.word-atlas-field:hover::before {
+  opacity: 1;
+}
+
+.word-atlas-field b,
+.word-atlas-field strong {
+  position: relative;
+  z-index: 1;
 }
 
 .word-atlas-field b {
@@ -8627,6 +8719,16 @@ button {
   font-size: 13.44px;
   font-weight: 700;
   line-height: 19px;
+}
+
+@keyframes wordAtlasRowGlow {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 rgba(232, 184, 78, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 0 1px rgba(232, 184, 78, 0.14);
+  }
 }
 
 @media (max-width: 760px) {
@@ -8735,10 +8837,12 @@ button {
 
   .word-atlas-field {
     gap: 7px;
+    padding: 9px 8px 9px 4px;
   }
 
   .word-atlas-field strong {
-    font-size: 8px;
+    font-size: 11px;
+    line-height: 1.45;
   }
 }
 @media (max-width: 767px) {
@@ -9040,9 +9144,8 @@ button {
   .decision-heading h2 {
     width: 100%;
     max-width: 100%;
+  }
 
-<<<<<<< Updated upstream
-=======
   .decision-section
     > div
     > div:first-child
@@ -9061,7 +9164,6 @@ button {
     max-width: 332px;
     margin: 0;
     text-align: center;
->>>>>>> Stashed changes
     font-size: 28px !important;
     line-height: 1.3 !important;
 
